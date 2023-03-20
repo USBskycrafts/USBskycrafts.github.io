@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-image="https://raw.githubusercontent.com/USBskycrafts/Picture-Bed/a79f77632968e89bbbc275d5eeb614090e1ac030/IMG_7159.JPG"></div>
+    
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Blog of Junran Yang</h1>
+                <h3></h3>
+                <h5>a blog to record daily life</h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2023/03/20/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h1><h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code class="c++">/*
+    什么是后缀数组呢，首先清楚两个概念，第一个是在这里讨论的所有字符串下标都以1开头，另一个是后缀i表示以第i个char开头的后缀
+    其中有两个数组，分别为 sa和rk，其中sa[i]表示将所有后缀排序后第i小的序号，rk[i]表示后缀i的排名
+    我们有三个问题
+    1.后缀数组sa怎么求
+        1.倍增方法，代码在下面，首先我们对每一个字符进行排名，之后我们进行倍增，从2^k-1 转移到2^k的长度，每次转移的时候，我们重新对sa数组
+        排序即可
+    2.倍增+基数排序的方式
+        2.光有一个sa，是完全不够的，还需要一个height数组，height数组维护的是相邻(i-1,i)rank的两个后缀的最长公共前缀
+        怎么求呢？：我们按照原串的顺序从前往后求，每次求i开头的后缀以及sa[rk[i]-1]开头的后缀，这表示排名第rk[i]和排名第rk[i-1]的后缀
+        假设目前已经求出h[rk[i]]=h,sa[rk[i]]=k
+        那么有两种情况：
+            1.h!=0 此时从后缀的开头继续向后找
+            2.h!=0 下次求i+1和k+1 这两个后缀的长度至少为h-1（去掉第i和第k位）
+        我们需要一个引理：h[rk[i]]&gt;=h[rk[i-1]]-1 证明这个引理还需要另一个引理 lcp(i,j)=min(lcp[k],rk[i]&lt;=k&lt;=rk[j])（这是很显然的，因为lcp(i,j)=min(lcp(i,i+1),lcp(i+1,i+2),lcp[j-1,j])）
+            证明如下：（看这个链接的证明https://zhuanlan.zhihu.com/p/346305506）
+                另sa[i-1]=aAD,另sa[rk[i-1]-1]=aAB,按照后缀数组的定义，D的字典序小于B的字典序,len(a)=h[i-1]-1;
+                那么sa[i]=AD sa[rk[i-1]-1]+1=AB
+                又根据上面的引理lcp(i,sa[rk[i-1]-1]+1)=A=height[i-1]-1&lt;=h[i]
+                那么得证
+        看这个网址就行了https://blog.csdn.net/zjllll123/article/details/107369473
+
+*/
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+vector&lt;int&gt;getSa(string s)
+&#123;
+    int n=s.size(),m=130;//
+    vector&lt;int&gt;sa(n+1,0),rk(n+1,0),pos(n+1,0),cnt(m,0);
+    auto base_sort=[&amp;]()&#123;
+        fill(cnt.begin(),cnt.begin()+m+1,0);
+        for(int i=1;i&lt;=n;++i)cnt[rk[i]]++;
+        for(int i=2;i&lt;m;++i)cnt[i]+=cnt[i-1];
+        for(int i=n;i&gt;=1;--i)sa[cnt[rk[pos[i]]]--]=pos[i];//此时第一位的次序依旧不变，此时还是用的前一次的rank，
+        //不同的是pos[i]的改变，对于rk[pos[i]]==rk[pos[j]]来说，如果你i&lt;j，那么你的会慢一点遍历到，对应的sa值也就会小
+    &#125;;
+    auto check=[&amp;](int x,int y,int k)&#123;
+         if(pos[x]!=pos[y])
+         &#123;
+            return false;
+         &#125;
+         int r1=x+k&gt;n?-1:pos[x+k];
+         int r2=y+k&gt;n?-1:pos[y+k];
+         return r1==r2;
+    &#125;;
+    for(int i=1;i&lt;=n;++i)rk[i]=s[i-1],pos[i]=i;
+    base_sort();
+    for(int k=1;k&lt;=n;k&lt;&lt;=1)
+    &#123;
+        int rank=0;for(int i=n-k+1;i&lt;=n;++i)pos[++rank]=i;
+        for(int i=1;i&lt;=n;++i)if(sa[i]&gt;k)pos[++rank]=sa[i]-k;
+        base_sort();
+        swap(rk,pos);
+        rank=1;rk[sa[1]]=rank;
+        //这个时候的pos数组是rk
+        for(int i=2;i&lt;=n;++i)&#123;if(!check(sa[i],sa[i-1],k))++rank;rk[sa[i]]=rank;&#125;
+        if(rank==n)break;//完全排好序了
+        m=rank;
+    &#125;
+    return sa;
+&#125;
+//获得height数组
+vector&lt;int&gt;getLcp(string s)
+&#123;
+    int n=s.size();
+    vector&lt;int&gt;sa=getSa(s);
+    vector&lt;int&gt;rk(n+1,0);
+    vector&lt;int&gt;lcp(n+1,0);
+    for(int i=1;i&lt;=n;++i)rk[sa[i]]=i;
+    int h=0;
+    lcp[1]=0;
+    for(int i=1;i&lt;=n;++i)
+    &#123;
+        int k=sa[rk[i]-1];
+        if(h&gt;0)--h;
+        for(;k+h&lt;=n&amp;&amp;i+h&lt;=n;++h)
+        &#123;
+            if(s[i+h-1]!=s[k+h-1])break;
+        &#125;
+        lcp[rk[i]]=h;
+    &#125;
+    return lcp;
+&#125;
+int main()
+&#123;
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  vector&lt;int&gt;ans=getSa(&quot;abab&quot;);
+  for(auto&amp; i:ans)cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+  return 0;
+&#125;
+/*
+    直接便携式用：
+        vector&lt;int&gt;rk(n+1,0),sa(n+1,0),pos(n+1,0),cnt(m,0),lcp(n+1,0);;
+        auto base_sort=[&amp;]()&#123;
+            fill(cnt.begin(),cnt.end(),0);
+            for(int i=1;i&lt;=n;++i)cnt[rk[i]]++;
+            for(int i=2;i&lt;m;++i)cnt[i]+=cnt[i-1];
+            for(int i=n;i&gt;=1;--i)sa[cnt[rk[pos[i]]]--]=pos[i];
+        &#125;;
+        auto getSa=[&amp;]()&#123;
+            auto check=[&amp;](int x,int y,int k)&#123;
+                if(pos[x]!=pos[y])
+                &#123;
+                    return false;
+                &#125;
+                int r1=x+k&gt;n?-1:pos[x+k];
+                int r2=y+k&gt;n?-1:pos[y+k];
+                return r1==r2;
+            &#125;;
+            for(int i=1;i&lt;=n;++i)pos[i]=i,rk[i]=s[i-1];
+            base_sort();
+            for(int k=1;k&lt;=n;k&lt;&lt;=1)
+            &#123;
+                int rank=0;for(int i=n-k+1;i&lt;=n;++i)pos[++rank]=i;
+                for(int i=1;i&lt;=n;++i)if(sa[i]&gt;k)pos[++rank]=sa[i]-k;
+                base_sort();
+                swap(rk,pos);
+                rk[sa[1]]=rank=1;
+                for(int i=2;i&lt;=n;++i)&#123;if(!check(sa[i],sa[i-1],k))++rank;rk[sa[i]]=rank;&#125;
+                if(rank==n)break;
+                m=rank;
+            &#125;
+        &#125;;
+        auto getHeight=[&amp;]()
+        &#123;
+            getSa();
+            int h=0;
+            lcp[rk[1]]=0;
+            for(int i=1;i&lt;=n;++i)
+            &#123;
+                int k=sa[rk[i]-1];//sa[i-1]的开始位置
+                if(!k)continue;
+                if(h)--h;
+                for(;k+h&lt;=n&amp;&amp;i+h&lt;=n;++h)if(s[k+h-1]!=s[i+h-1])break;
+                lcp[rk[i]]=h;
+            &#125;
+        &#125;;
+
+*/
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/2424.%20Longest%20Uploaded%20Prefix/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2424-Longest-Uploaded-Prefix"><a href="#2424-Longest-Uploaded-Prefix" class="headerlink" title="2424. Longest Uploaded Prefix"></a>2424. Longest Uploaded Prefix</h1><p><strong>感悟</strong></p>
+<p>正向不行，就可以反向</p>
+<pre><code class="c++">class LUPrefix &#123;
+private:
+    set&lt;int&gt; s;
+public:
+    LUPrefix(int n) &#123;
+        for(int i = 1; i &lt;= n + 1; i++) s.insert(i);
+    &#125;
+    
+    void upload(int video) &#123;
+        s.erase(video);
+    &#125;
+    
+    int longest() &#123;
+        return *s.begin() - 1;
+    &#125;
+&#125;;
+
+/**
+ * Your LUPrefix object will be instantiated and called as such:
+ * LUPrefix* obj = new LUPrefix(n);
+ * obj-&gt;upload(video);
+ * int param_2 = obj-&gt;longest();
+ */
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2424.%20Longest%20Uploaded%20Prefix/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/2421.%20Number%20of%20Good%20Paths/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="421-Number-of-Good-Paths"><a href="#421-Number-of-Good-Paths" class="headerlink" title="421. Number of Good Paths"></a>421. Number of Good Paths</h1><h3 id="核心：并查集"><a href="#核心：并查集" class="headerlink" title="核心：并查集"></a>核心：并查集</h3><p>关键要把并查集<code>UnionFind</code>写对，注意一些优化方法，注意是<code>p[x] = find(p[x])</code>而不是<code>p[x]=find(x)</code></p>
+<pre><code class="c++">class Solution &#123;
+private:
+    struct UnionFind &#123;
+        vector&lt;int&gt; p, size;
+        UnionFind(int n) &#123;
+            size.resize(n, 1);
+            for(int i = 0; i &lt; n; i++) p.push_back(i);
+        &#125;
+        
+        inline int find(int x) &#123;
+            return x == p[x] ? x : (p[x] = find(p[x]));
+        &#125;
+        
+        void join(int x, int y) &#123;
+            int fx = find(x), fy = find(y);
+            if(fx == fy) return;
+            if(size[fx] &gt; size[fy]) swap(fx, fy);
+            p[fx] = fy;
+            size[fx] += size[fy];
+        &#125;
+    &#125;;
+public:
+    int numberOfGoodPaths(vector&lt;int&gt;&amp; vals, vector&lt;vector&lt;int&gt;&gt;&amp; edges) &#123;
+        int n = vals.size();
+        UnionFind uf(n);
+        unordered_map&lt;int, vector&lt;int&gt;&gt; g;
+        map&lt;int, vector&lt;int&gt;&gt; o_node;
+        int ans = 0;
+        for(auto &amp;edge : edges) &#123;
+            int u = edge[0], v = edge[1];
+            g[u].push_back(v);
+            g[v].push_back(u);
+        &#125;
+        
+        for(int i = 0; i &lt; n; i++) &#123;
+            o_node[vals[i]].push_back(i);
+        &#125;
+        
+        for(auto &amp;[_, nodes] : o_node) &#123;
+            unordered_map&lt;int, int&gt; count;
+            for(auto &amp;node : nodes) &#123;
+                for(auto &amp;adj : g[node]) &#123;
+                    if(vals[adj] &lt;= vals[node]) uf.join(adj, node);
+                    //cout &lt;&lt; &quot;1:&quot; &lt;&lt; adj &lt;&lt; &quot; &quot; &lt;&lt; node &lt;&lt; endl;
+                &#125;
+            &#125;
+            
+            for(auto &amp;node : nodes) &#123;
+                count[uf.find(node)]++;
+            &#125;
+            
+            for(auto &amp;[_, num] : count) &#123;
+                ans += num * (num - 1) / 2;
+            &#125;
+            //cout &lt;&lt; ans &lt;&lt; endl;
+        &#125;
+        return ans + n;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2421.%20Number%20of%20Good%20Paths/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/2420.%20Find%20All%20Good%20Indices/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2420-Find-All-Good-Indices"><a href="#2420-Find-All-Good-Indices" class="headerlink" title="2420. Find All Good Indices"></a>2420. Find All Good Indices</h1><p><strong>Notes:</strong></p>
+<ol>
+<li>主题思想单调队列没有任何问题，关键是如何实现单调队列。通过单一从左到右遍历数组和容易出现一些情况无法考虑到的情况（几十个WA的教训），因此考虑从数组两端进行两次遍历，分别统计出上升和下降的长度</li>
+<li>当<code>increase[i + 1]</code>和<code>decrease[i - 1]</code>都大于<code>k</code>时，则当前的<code>i</code>满足题目要求</li>
+</ol>
+<pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; goodIndices(vector&lt;int&gt;&amp; nums, int k) &#123;
+        int n = nums.size();
+        vector&lt;int&gt; increase(n, 1), decrease(n, 1), ans;
+        
+        for(int i = 1; i &lt; n; i++) &#123;
+            if(nums[i] &lt;= nums[i - 1]) decrease[i] += decrease[i - 1];
+        &#125;
+        
+        for(int i = n - 2; i &gt;= 0; i--) &#123;
+            if(nums[i] &lt;= nums[i + 1]) increase[i] += increase[i + 1];
+        &#125;
+        
+        for(int i = k; i &lt; n - k; i++) &#123;
+            if(increase[i + 1] &gt;= k &amp;&amp; decrease[i - 1] &gt;= k) ans.push_back(i);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2420.%20Find%20All%20Good%20Indices/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/2423.%20Remove%20Letter%20To%20Equalize%20Frequency/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2423-Remove-Letter-To-Equalize-Frequency"><a href="#2423-Remove-Letter-To-Equalize-Frequency" class="headerlink" title="2423. Remove Letter To Equalize Frequency"></a>2423. Remove Letter To Equalize Frequency</h1><h2 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h2><p>统计维护最高频率<code>max_freq</code>和次高频率<code>max_freq - 1</code>，满足下列三种情况返回true</p>
+<ol>
+<li>最高频率的字母一共有<code>max_count=1</code>个，意味着剩下的全是<code>max_freq - 1</code>频率的字母</li>
+<li>最高频率为1，其他字母可以直接删除掉</li>
+<li>最低频率的字母有且只有一个</li>
+</ol>
+<pre><code class="c++">class Solution &#123;
+public:
+    bool equalFrequency(string word) &#123;
+        unordered_map&lt;char, int&gt; m;
+        int max_freq = 0, max_count = 0, min_count = 0;
+        for(auto c : word) &#123;
+            m[c]++;
+            max_freq = max(max_freq, m[c]);
+        &#125;
+        for(auto &amp;[_, freq] : m) &#123;
+            if(freq == max_freq) max_count++;
+            else if(freq == max_freq - 1) min_count++;
+            else return false;
+        &#125;
+        
+        return max_count == 1 || max_freq == 1 || min_count == 1;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2423.%20Remove%20Letter%20To%20Equalize%20Frequency/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1996.%20The%20Number%20of%20Weak%20Characters%20in%20the%20Game/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1996-The-Number-of-Weak-Characters-in-the-Game"><a href="#1996-The-Number-of-Weak-Characters-in-the-Game" class="headerlink" title="1996. The Number of Weak Characters in the Game"></a>1996. The Number of Weak Characters in the Game</h1><p><strong><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-number-of-weak-characters-in-the-game">https://leetcode.com/problems/the-number-of-weak-characters-in-the-game</a></strong></p>
+<pre><code class="c++">class Solution &#123;
+public:
+    int numberOfWeakCharacters(vector&lt;vector&lt;int&gt;&gt;&amp; properties) &#123;
+        sort(properties.begin(), properties.end(), [](vector&lt;int&gt; &amp;a, vector&lt;int&gt; &amp;b) &#123;
+            if(a[0] != b[0]) return a[0] &gt; b[0];
+            else return a[1] &lt; b[1];
+        &#125;);
+        
+        int ans = 0, max_def = INT_MIN;
+        for(auto p : properties) &#123;
+            if(max_def &gt; p[1]) ans++;
+            else max_def = p[1];
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>核心思想：</p>
+<p>attack属性从大到小排列，defend属性从小到大排列，从而确保当遍历到一个<code>auto p</code>时，当<code>max_def</code>比当前<code>p</code>的defend值大时，attack也能保证比defend大。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1996.%20The%20Number%20of%20Weak%20Characters%20in%20the%20Game/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2007-Find-Original-Array-From-Doubled-Array"><a href="#2007-Find-Original-Array-From-Doubled-Array" class="headerlink" title="2007. Find Original Array From Doubled Array"></a>2007. Find Original Array From Doubled Array</h1><pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; findOriginalArray(vector&lt;int&gt;&amp; changed) &#123;
+        if(changed.size() % 2 == 1) return &#123;&#125;;
+        unordered_map&lt;int, int&gt; m;
+        vector&lt;int&gt; ans;
+        for(auto num : changed) &#123;
+            m[num]++;
+        &#125;
+        sort(changed.begin(), changed.end());
+        for(auto num : changed) &#123;
+            if(m[num] == 0) continue;
+            if(m[num * 2] == 0) return &#123;&#125;;
+            ans.push_back(num);
+            m[num]--;
+            m[num * 2]--;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>Notes</strong></p>
+<ol>
+<li><p>为什么用map而不是set？</p>
+<p>因为要对未来遍历到的元素进行“删除”操作，如果用set会导致越界</p>
+</li>
+<li><p>为什么要对changed排序后遍历，而不是用map统计完changed后直接遍历map，如：</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; findOriginalArray(vector&lt;int&gt;&amp; changed) &#123;
+        if(changed.size() % 2 == 1) return &#123;&#125;;
+        map&lt;int, int&gt; m;
+        vector&lt;int&gt; ans;
+        for(auto num : changed) &#123;
+            m[num]++;
+        &#125;
+        for(auto num : m) &#123;
+            if(num.second == 0) continue;
+            if(m[num.first * 2] == 0) return &#123;&#125;;
+            ans.push_back(num.first);
+            num.second--;
+            m[num.first * 2]--;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>因为存在<code>[0, 0, 0, 0]</code>这种特殊情况，<code>expected: [0, 0]</code>，<code>output: [0]</code></p>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1531.%20String%20Compression%20II/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1531-String-Compression-II"><a href="#1531-String-Compression-II" class="headerlink" title="1531. String Compression II"></a>1531. String Compression II</h1><h2 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h2><p>状态转移方程：</p>
+<p><code>dp[i][j]</code>表示第<code>i</code>个字符在删掉<code>j</code>个字符的时候，压缩字符串的长度</p>
+<p>如果选择直接删除当前字符，那么<code>dp[i][j] = dp[i + 1][j - 1]</code></p>
+<p>如果不删除当前字符，则从当前往后进行遍历，将与当前字符不同的字符则删除，直到用完删除次数为止：</p>
+<pre><code class="c++">inline int getcount(int count) &#123;
+       return (count == 1 ? 1 : (count &lt; 10 ? 2 : (count &lt; 100 ? 3 : 4)));
+&#125;
+
+...
+
+int del_c = j, count = 0;
+for(int k = i; k &lt; n &amp;&amp; del_c &gt;= 0; k++) &#123;
+    if(s[i] == s[k]) &#123;
+        count++;
+        //这里确保只有当s[i] != s[k + 1]时，才会取到最小值，在取到最小值前的主要目的为更新count
+        dp[i][j] = min(dp[i][j], dp[k + 1][del_c] + getcount(count));
+    &#125; else &#123;
+        del_c--;
+    &#125;
+&#125;
+</code></pre>
+<p>边界条件：</p>
+<p><code>dp[n][x]</code>时代表一个字符都没选，因此初始长度为0</p>
+<p><code>dp[x][0]</code>表示删了0个字符，因此字符串长度为原长<code>n</code>，但可以用一个随意的最大值替代，如<code>INT_MAX</code></p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><pre><code class="c++">class Solution &#123;
+private:
+   int dp[101][101];
+   inline int getcount(int count) &#123;
+       return (count == 1 ? 1 : (count &lt; 10 ? 2 : (count &lt; 100 ? 3 : 4)));
+   &#125;
+public:
+    int getLengthOfOptimalCompression(string s, int del) &#123;
+        int n = s.size();
+        for(int i = n; i &gt;= 0; i--) &#123;
+            for(int j = 0; j &lt;= del; j++) &#123;
+                if(i == n) &#123;
+                    dp[i][j] = 0;
+                    continue;
+                &#125;
+                dp[i][j] = (j == 0 ? INT_MAX : dp[i + 1][j - 1]);
+                int del_c = j, count = 0;
+                for(int k = i; k &lt; n &amp;&amp; del_c &gt;= 0; k++) &#123;
+                    if(s[i] == s[k]) &#123;
+                        count++;
+                        dp[i][j] = min(dp[i][j], dp[k + 1][del_c] + getcount(count));
+                    &#125; else &#123;
+                        del_c--;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return dp[0][del];
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1531.%20String%20Compression%20II/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/Leetcode%20%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Leetcode-刷题笔记"><a href="#Leetcode-刷题笔记" class="headerlink" title="Leetcode 刷题笔记"></a>Leetcode 刷题笔记</h1><h2 id="114-Flatten-Binary-Tree-to-Linked-List"><a href="#114-Flatten-Binary-Tree-to-Linked-List" class="headerlink" title="114. Flatten Binary Tree to Linked List"></a>114. Flatten Binary Tree to Linked List</h2><p>Given the <code>root</code> of a binary tree, flatten the tree into a “linked list”:</p>
+<ul>
+<li>The “linked list” should use the same <code>TreeNode</code> class where the <code>right</code> child pointer points to the next node in the list and the <code>left</code> child pointer is always <code>null</code>.</li>
+<li>The “linked list” should be in the same order as a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Tree_traversal#Pre-order,_NLR"><strong>pre-order</strong> <strong>traversal</strong></a> of the binary tree.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/01/14/flaten.jpg" alt="img"></p>
+<pre><code>Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+</code></pre>
+<p>Code:</p>
+<pre><code class="c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode &#123;
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
+ * &#125;;
+ */
+class Solution &#123;
+private:
+    TreeNode* dfs(TreeNode* root) &#123;
+        if(!root-&gt;left &amp;&amp; !root-&gt;right) return root;
+        TreeNode *tail, *next = root-&gt;right;
+        
+        if(root-&gt;left != nullptr) &#123;
+            tail = dfs(root-&gt;left);
+            root-&gt;right = root-&gt;left;
+            root-&gt;left = nullptr;
+            tail-&gt;right = next;
+        &#125;
+        if(root-&gt;right != nullptr) tail = dfs(root-&gt;right);
+        return tail;
+    &#125;
+public:
+    void flatten(TreeNode* root) &#123;
+        if(root == nullptr) return;
+        dfs(root);
+        return;
+    &#125;
+&#125;;
+</code></pre>
+<p>Solution:</p>
+<p>Flatten the left subtree, then insert it between the root and the right child, finally go to the right tree and repeat the process before.</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/Leetcode%20%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1770-Maximum-Score-from-Performing-Multiplication-Operations"><a href="#1770-Maximum-Score-from-Performing-Multiplication-Operations" class="headerlink" title="1770. Maximum Score from Performing Multiplication Operations"></a>1770. Maximum Score from Performing Multiplication Operations</h1><p><img src="https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/Documents/1770/1770_Recursion_Tree.svg" alt="Overlapping"></p>
+<h2 id="状态转移方程推导："><a href="#状态转移方程推导：" class="headerlink" title="状态转移方程推导："></a>状态转移方程推导：</h2><p><strong>VERY IMPORTANT! 由于是搜索树，越往下，问题规模越小，下方是上方的子问题，因此要从叶子节点开始构建！</strong><br>$$<br>right &#x3D; n - 1 - (i - left) \<br>dp[i][left]&#x3D;\max(dp[i+1][left]+mul[i]*nums[left], dp[i+1][left] + mul[i]*nums[right])<br>$$<br>其中，$left$和$right$分别为区间左右侧的下标，$i$为操作次数</p>
+<h2 id="代码-O-m-2"><a href="#代码-O-m-2" class="headerlink" title="代码($O(m^2)$)"></a>代码($O(m^2)$)</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maximumScore(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; mul) &#123;
+        int n = nums.size(), m = mul.size();
+        vector&lt;int&gt; dp(m + 1, 0);
+        
+        for(int i = m - 1; i &gt;= 0; i--) &#123;
+            for(int left = 0; left &lt;= i; left++) &#123;
+                int right = n - 1 - (i - left);
+                dp[left] = max(dp[left + 1] + mul[i] * nums[left],
+                              dp[left] + mul[i] * nums[right]);
+            &#125;
+        &#125;
+        return dp[0];
+    &#125;
+&#125;;
+</code></pre>
+<p>内存进行了优化</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations/" class="go-post">阅读全文</a>
+</div>
+
+
+            <div class="page-current">
+    <div class="prev">
+        
+        <a class="page-num" href="/page/3/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            <a class="page-num" href="/">1</a>
+            <span class="page-omit">...</span>
+            
+            
+                
+                
+                <a class="page-num" href="/page/2">2</a>
+                
+            
+            <a class="page-num" href="/page/3/">3</a>
+        </span>
+        
+        <span class="current">4</span>
+        
+        <span>
+            <a class="page-num" href="/page/5/">5</a>
+            
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a class="page-num" href="/page/5/">
+            <i class="fa-solid fa-caret-right fa-fw"></i>
+        </a>
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" alt="avatar" />
+        </div>
+        <div class="name">Junran Yang(杨竣然)</div>
+        <div class="description">
+            <p>Grad student in Northwestern University</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a href="/">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>

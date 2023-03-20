@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Hello World | Blog of Junran Yang</title>
+        <title>Blog of Junran Yang</title>
         <meta name="author" content="Junran Yang(杨竣然)" />
         <meta name="description" content="a blog to record daily life" />
         <meta name="keywords" content="" />
@@ -16,13 +16,6 @@
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
 
 
 
@@ -145,33 +138,44 @@
 
                 <div class="article">
     <div>
-        <h1>Hello World</h1>
+        <h1></h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/11
+            2023/3/20
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+        <h1 id="767-Reorganize-String"><a href="#767-Reorganize-String" class="headerlink" title="767. Reorganize String"></a>767. Reorganize String</h1><p><strong>思路：</strong></p>
+<p>取堆上数量最多的两个字母，然后<strong>交错</strong>排序。因为是交错排序，因此，要分别用<code>cur</code>，<code>prev</code>的结构</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    string reorganizeString(string s) &#123;
+        unordered_map&lt;char, int&gt; m;
+        for(char c : s) m[c]++;
+        priority_queue&lt;pair&lt;int, char&gt;&gt; h;
+        for(auto p : m) h.push(&#123;p.second, p.first&#125;);
+        pair&lt;int, char&gt; prev = &#123;0, &#39;#&#39;&#125;, cur;
+        string ans;
+        while(h.size()) &#123;
+            cur = h.top();
+            h.pop();
+            ans += cur.second;
+            cur.first--;
+            if(prev.first &gt; 0) h.push(prev);
+            prev = cur;
+        &#125;
+        cout &lt;&lt; ans &lt;&lt; endl;
+        return ans.size() == s.size() ? ans : &quot;&quot;;
+    &#125;
+&#125;;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
     </div>
     

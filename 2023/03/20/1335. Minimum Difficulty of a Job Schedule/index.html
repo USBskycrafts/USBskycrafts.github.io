@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="1335-Minimum-Difficulty-of-a-Job-Schedule"><a href="#1335-Minimum-Difficulty-of-a-Job-Schedule" class="headerlink" title="1335. Minimum Difficulty of a Job Schedule"></a>1335. Minimum Difficulty of a Job Schedule</h1><h2 id="状态转移方程："><a href="#状态转移方程：" class="headerlink" title="状态转移方程："></a>状态转移方程：</h2><p><code>dp[i][j]</code>表示第<code>i</code>天时，完成了<code>j</code>个任务的最小难度</p>
+<p>通过从<code>j</code>遍历到<code>i</code>，找出<code>[i:j]</code>间的难度值</p>
+<pre><code class="c++">max_dif = max(max_dif, jobDifficulty[k]);
+</code></pre>
+<p>并比较</p>
+<pre><code class="c++">dp[i][j] = min(dp[i][j], max_dif + dp[i - 1][k - 1])
+</code></pre>
+<p>获得当前<code>dp[i][j]</code>的最小值</p>
+<p>边界条件：</p>
+<p><code>dp[0][x]</code>时表示第<code>0</code>天时完成<code>j</code>个任务的花费，为从<code>0</code>遍历到<code>x</code>的困难度最大值</p>
+<p><code>dp[x][0]</code>表示第<code>x</code>天时一个任务都没完成时的困难度，由于本题为求最小值，因此默认为一个足够大的值即可</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><pre><code class="c++">class Solution &#123;
+public:
+    int minDifficulty(vector&lt;int&gt;&amp; jobDifficulty, int d) &#123;
+        int dp[11][301];
+        memset(dp, 0x3f3f3f3f, sizeof(dp));
+        int n = jobDifficulty.size(), max_init = 0; 
+        for(int j = 0; j &lt; n; j++) &#123;
+            max_init = max(max_init, jobDifficulty[j]);
+            dp[0][j] = max_init; 
+        &#125;
+        for(int i = 1; i &lt; d; i++) &#123;
+            for(int j = i; j &lt; n; j++) &#123;
+                int max_dif = 0;
+                for(int k = j; k &gt;= i; k--) &#123;
+                    max_dif = max(max_dif, jobDifficulty[k]);
+                    dp[i][j] = min(dp[i][j], max_dif + dp[i - 1][k - 1]);
+                &#125;
+                //cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot; &quot; &lt;&lt; dp[i][j] &lt;&lt; endl;
+            &#125;
+        &#125;  
+        int ans = dp[d - 1][n - 1];
+        if(ans == 0x3f3f3f3f) return -1;
+        else return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>

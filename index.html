@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
 
 
 <script src="/js/lib/preview.js"></script>
@@ -165,8 +158,8 @@
             
 
 <div class="post">
-    <a href="/2023/03/11/hello-world/">
-        <h2 class="post-title">Hello World</h2>
+    <a href="/2023/03/20/1335.%20Minimum%20Difficulty%20of%20a%20Job%20Schedule/">
+        <h2 class="post-title"></h2>
     </a>
     <div class="category-and-date">
         
@@ -174,7 +167,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/11
+            2023/3/20
         </span>
         
         
@@ -182,19 +175,43 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+            <h1 id="1335-Minimum-Difficulty-of-a-Job-Schedule"><a href="#1335-Minimum-Difficulty-of-a-Job-Schedule" class="headerlink" title="1335. Minimum Difficulty of a Job Schedule"></a>1335. Minimum Difficulty of a Job Schedule</h1><h2 id="状态转移方程："><a href="#状态转移方程：" class="headerlink" title="状态转移方程："></a>状态转移方程：</h2><p><code>dp[i][j]</code>表示第<code>i</code>天时，完成了<code>j</code>个任务的最小难度</p>
+<p>通过从<code>j</code>遍历到<code>i</code>，找出<code>[i:j]</code>间的难度值</p>
+<pre><code class="c++">max_dif = max(max_dif, jobDifficulty[k]);
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+<p>并比较</p>
+<pre><code class="c++">dp[i][j] = min(dp[i][j], max_dif + dp[i - 1][k - 1])
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+<p>获得当前<code>dp[i][j]</code>的最小值</p>
+<p>边界条件：</p>
+<p><code>dp[0][x]</code>时表示第<code>0</code>天时完成<code>j</code>个任务的花费，为从<code>0</code>遍历到<code>x</code>的困难度最大值</p>
+<p><code>dp[x][0]</code>表示第<code>x</code>天时一个任务都没完成时的困难度，由于本题为求最小值，因此默认为一个足够大的值即可</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><pre><code class="c++">class Solution &#123;
+public:
+    int minDifficulty(vector&lt;int&gt;&amp; jobDifficulty, int d) &#123;
+        int dp[11][301];
+        memset(dp, 0x3f3f3f3f, sizeof(dp));
+        int n = jobDifficulty.size(), max_init = 0; 
+        for(int j = 0; j &lt; n; j++) &#123;
+            max_init = max(max_init, jobDifficulty[j]);
+            dp[0][j] = max_init; 
+        &#125;
+        for(int i = 1; i &lt; d; i++) &#123;
+            for(int j = i; j &lt; n; j++) &#123;
+                int max_dif = 0;
+                for(int k = j; k &gt;= i; k--) &#123;
+                    max_dif = max(max_dif, jobDifficulty[k]);
+                    dp[i][j] = min(dp[i][j], max_dif + dp[i - 1][k - 1]);
+                &#125;
+                //cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot; &quot; &lt;&lt; dp[i][j] &lt;&lt; endl;
+            &#125;
+        &#125;  
+        int ans = dp[d - 1][n - 1];
+        if(ans == 0x3f3f3f3f) return -1;
+        else return ans;
+    &#125;
+&#125;;
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             
         </div>
@@ -203,7 +220,621 @@
         
         
     </div>
-    <a href="/2023/03/11/hello-world/" class="go-post">阅读全文</a>
+    <a href="/2023/03/20/1335.%20Minimum%20Difficulty%20of%20a%20Job%20Schedule/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1155.%20Number%20of%20Dice%20Rolls%20With%20Target%20Sum/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1155-Number-of-Dice-Rolls-With-Target-Sum"><a href="#1155-Number-of-Dice-Rolls-With-Target-Sum" class="headerlink" title="1155. Number of Dice Rolls With Target Sum"></a>1155. Number of Dice Rolls With Target Sum</h1><h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><p>由于每个<code>j</code>累加时，不应该包含<code>dp[j]</code>自己，因此每次要初始化为0！</p>
+<pre><code class="c++">class Solution &#123;
+private:
+    const static int N = 1003, mod = (int)1e9 + 7;
+    int dp[N];
+public:
+    int numRollsToTarget(int n, int k, int target) &#123;
+        
+        for(int j = 1; j &lt;= k; j++) dp[j] = 1;
+        
+        for(int i = 1; i &lt; n; i++) &#123;
+            for(int j = target; j &gt;= 1; j--) &#123;
+                dp[j] = 0;
+                for(int k_ = max(j - k, 1); k_ &lt; j; k_++) &#123;
+                    dp[j] = (dp[j] + dp[k_]) % mod;
+                &#125;
+                //cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &quot; &quot;&lt;&lt; dp[j] &lt;&lt; endl;
+            &#125;
+        &#125;
+        return dp[target];
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1155.%20Number%20of%20Dice%20Rolls%20With%20Target%20Sum/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1383.%20Maximum%20Performance%20of%20a%20Team/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1383-Maximum-Performance-of-a-Team"><a href="#1383-Maximum-Performance-of-a-Team" class="headerlink" title="1383. Maximum Performance of a Team"></a>1383. Maximum Performance of a Team</h1><h2 id="DP解法（WA）"><a href="#DP解法（WA）" class="headerlink" title="DP解法（WA）"></a>DP解法（WA）</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxPerformance(int n, vector&lt;int&gt;&amp; speed, vector&lt;int&gt;&amp; efficiency, int k) &#123;
+        long long dp[n + 1][k + 1];
+        int sum[n + 1][k + 1], eff_min[n + 1][k + 1];
+        const int mod = (int)1e9 + 7;
+        memset(dp, 0, sizeof(dp));
+        memset(sum, 0, sizeof(sum));
+        memset(eff_min, 0x7f, sizeof(eff_min));
+        
+        for(int i = 1; i &lt;= n; i++) &#123;
+            for(int j = 1; j &lt;= k; j++) &#123;
+                long long count = ((sum[i - 1][j - 1] + speed[i - 1]) * (long long)min(efficiency[i - 1], eff_min[i - 1][j - 1]));
+                sum[i][j] = (dp[i - 1][j] &lt; count ? (sum[i - 1][j - 1] + speed[i - 1]) : sum[i - 1][j]);
+                dp[i][j] = max(dp[i - 1][j], count);
+                eff_min[i][j] = (dp[i - 1][j] &lt; count ? min(efficiency[i - 1], eff_min[i - 1][j - 1]) : eff_min[i - 1][j]);               
+            &#125;
+        &#125;
+        
+        int ans = 0;
+        for(int j = 1; j &lt;= k; j++) ans = max(ans, (int)dp[n][j] % mod);
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>为什么会WA？：</p>
+<ol>
+<li><pre><code class="javascript">input:
+11
+[2,10,3,1,5,8,1,2,3,1,1]
+[5,4,3,9,7,2,12,12,13,44,4]
+4
+
+output:
+80
+
+expect:
+84
+</code></pre>
+<p>分析：</p>
+</li>
+<li></li>
+</ol>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxPerformance(int n, vector&lt;int&gt;&amp; speed, vector&lt;int&gt;&amp; efficiency, int k) &#123;
+        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; speed_list;
+        vector&lt;pair&lt;int, int&gt;&gt; eng;
+        int mod = (int)1e9 + 7;
+        
+        for(int i = 0; i &lt; n; i++) eng.push_back(&#123;efficiency[i], speed[i]&#125;);
+        sort(eng.rbegin(), eng.rend());
+        
+        long long ans = 0, speed_count = 0;
+        for(int i = 0; i &lt; n; i++) &#123;
+            speed_list.push(eng[i].second);
+            speed_count += eng[i].second;
+            if(speed_list.size() &gt; k) &#123;
+                speed_count -= speed_list.top();
+                speed_list.pop();
+            &#125;
+            ans = max(ans, (long long)eng[i].first * speed_count);
+        &#125;
+        return ans % mod;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>note:</strong></p>
+<ol>
+<li>将数组按<code>efficiency</code>从大到小排列，并且用一个小顶堆储存<code>speed</code>，目的在于保障迭代到当前第<code>i</code>个元素时，前<code>i</code>个元素的<code>effiency</code>更大的情况下，存下前<code>k</code>大的<code>speed</code>元素，并要记录它们的和</li>
+<li>数据结构构造思路：“最小的<code>effiency</code>&#x3D;&#x3D;&#x3D;&gt;按照从大到小排列好的数据，前<code>k</code>大的<code>speed</code>”&#x3D;&#x3D;&#x3D;&gt;大顶堆小顶堆均可，但此题中我们要把最小的<code>speed</code>抛出，因此使用小顶堆</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1383.%20Maximum%20Performance%20of%20a%20Team/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="990-Satisfiability-of-Equality-Equations"><a href="#990-Satisfiability-of-Equality-Equations" class="headerlink" title="990. Satisfiability of Equality Equations"></a>990. Satisfiability of Equality Equations</h1><h2 id="Core"><a href="#Core" class="headerlink" title="Core:"></a>Core:</h2><h3 id="Find-Union"><a href="#Find-Union" class="headerlink" title="Find-Union"></a><strong>Find-Union</strong></h3><h4 id="合并："><a href="#合并：" class="headerlink" title="合并："></a>合并：</h4><p>​	要合并两棵树，我们只需要将一棵树的根节点连到另一棵树的根节点。</p>
+<pre><code class="c++">void unite(size_t x, size_t y) &#123;
+    pa[find(x)] = find(y);
+&#125;
+</code></pre>
+<p>合并时，选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度。我们可以将节点较少或深度较小的树连到另一棵，以免发生退化，这种被称为<strong>启发式合并</strong></p>
+<pre><code class="c++">// C++ Version
+struct dsu &#123;
+    vector&lt;size_t&gt; pa, size;
+
+    explicit dsu(size_t _size): pa(_size), size(_size, 1) &#123;
+        iota(pa.begin(), pa.end(), 0);
+    &#125;
+
+    void unite(size_t x, size_t y) &#123;
+        x = find(x), y = find(y);
+        if (x == y) return;
+        if (size[x] &lt; size[y]) swap(x, y);
+        pa[y] = x;
+        size[x] += size[y];
+    &#125;
+&#125;
+</code></pre>
+<h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩:"></a>路径压缩:</h4><p>在合并中，由于我们只是将根节点合并到了新的树里，但根节点的子节点还是指向该根节点，因此可以进行路径压缩。查询过程中经过的每个元素都属于该集合，我们可以将其直接连到根节点以加快后续查询。</p>
+<p><img src="https://oi-wiki.org/ds/images/disjoint-set-compress.svg" alt="img"></p>
+<pre><code class="c++">
+// C++ Version
+size_t find(size_t x) &#123;
+    //                       ↓ very important
+    return pa[x] == x ? x : pa[x] = find(pa[x]);
+&#125;
+</code></pre>
+<p>本题代码：</p>
+<pre><code class="c++">class Solution &#123;
+private:
+    int uf[26];
+    inline int find(int x) &#123;return uf[x] == x ? x : (uf[x] = find(uf[x]));&#125;
+public:
+    bool equationsPossible(vector&lt;string&gt;&amp; equations) &#123;
+        int n = equations.size();
+        for(int i = 0; i &lt; 26; i++) uf[i] = i;
+        
+        for(string s : equations) &#123;
+            if(s[1] == &#39;=&#39;) &#123;
+                uf[find(s[0] - &#39;a&#39;)] = uf[find(s[3] - &#39;a&#39;)];
+            &#125;
+        &#125;
+        
+        for(string s : equations) &#123;
+            if(s[1] == &#39;!&#39; &amp;&amp; find(s[0] - &#39;a&#39;) == find(s[3] - &#39;a&#39;)) return false;
+        &#125;
+        
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1043-Partition-Array-for-Maximum-Sum"><a href="#1043-Partition-Array-for-Maximum-Sum" class="headerlink" title="1043. Partition Array for Maximum Sum"></a>1043. Partition Array for Maximum Sum</h1><h2 id="DP："><a href="#DP：" class="headerlink" title="DP："></a>DP：</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxSumAfterPartitioning(vector&lt;int&gt;&amp; arr, int k) &#123;
+        int n = arr.size();
+        int dp[n + 1];
+        memset(dp, 0, sizeof(dp));
+        for(int i = n - 1; i &gt;= 0; i--) &#123;
+            int len = 1, max_num = 0, max_sum = 0;
+            for(int j = i; j &lt; min(n, i + k); j++) &#123;
+                max_num = max(max_num, arr[j]);
+                max_sum = max((len++) * max_num + dp[j + 1], max_sum);
+            &#125;
+            dp[i] = max_sum;
+        &#125;
+        return dp[0];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>Note:</strong></p>
+<ol>
+<li>先后缀，再前缀的扫描，可以充分对结果<code>max_num</code>进行记录</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/948.%20Bag%20of%20Tokens/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="948-Bag-of-Tokens"><a href="#948-Bag-of-Tokens" class="headerlink" title="948. Bag of Tokens"></a>948. Bag of Tokens</h1><h2 id="双指针（-O-n-log-n-）"><a href="#双指针（-O-n-log-n-）" class="headerlink" title="双指针（$O(n\log{n}))$）"></a>双指针（$O(n\log{n}))$）</h2><pre><code class="c++">class Solution &#123;
+public:
+    int bagOfTokensScore(vector&lt;int&gt;&amp; tokens, int power) &#123;
+        sort(tokens.rbegin(), tokens.rend());
+        int i = 0, j = tokens.size() - 1;
+        int score = 0;
+        while(i &lt;= j) &#123;
+            if(power &lt; tokens[j] &amp;&amp; score == 0) break;
+            
+            if(power &lt; tokens[j]) &#123;
+                power += (tokens[i] - tokens[j]);
+                i++, j--;
+            &#125; else &#123;
+                score += 1;
+                power -= tokens[j];
+                j--;
+            &#125;
+            //cout &lt;&lt; power &lt;&lt; endl;
+        &#125;
+        return score;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>Notes:</strong></p>
+<ol>
+<li><p>必须判断当前score能否足够转换成power<code>if(power &lt; tokens[j] &amp;&amp; score == 0) break;</code>，然后才能进行<code>token</code>到<code>power</code>的转换</p>
+<pre><code class="c++">if(power &lt; tokens[j]) &#123;
+    power += (tokens[i] - tokens[j]);
+    i++, j--;
+&#125;
+</code></pre>
+</li>
+<li><p>由于是从大到小进行了排序，因此<code>if(power &lt; tokens[j])</code>里<code>token[i]</code>一定足够转换成<code>token[j]</code></p>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/948.%20Bag%20of%20Tokens/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/838.%20Push%20Dominoes/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="838-Push-Dominoes"><a href="#838-Push-Dominoes" class="headerlink" title="838. Push Dominoes"></a>838. Push Dominoes</h1><h3 id="Core-quantitative-the-force"><a href="#Core-quantitative-the-force" class="headerlink" title="Core: quantitative the force"></a>Core: quantitative the force</h3><p>if ‘L’ is ‘R’ is in initial string, we give the highest force, then when it spread, it is count down at the adjacent num, we do it from left and from right</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    string pushDominoes(string dominoes) &#123;
+        int n = dominoes.size();
+        auto print = [&amp;](int a)&#123;cout &lt;&lt; a &lt;&lt; &quot; &quot;;&#125;;
+        vector&lt;int&gt; left(n, 0), right(n, 0);
+        string ans(n, &#39;.&#39;);
+        for(int i = 0; i &lt; n; i++) &#123;
+            if(dominoes[i] == &#39;R&#39;) left[i] = n;
+            else if(dominoes[i] == &#39;L&#39;) continue;
+            else if(i != 0 &amp;&amp; left[i - 1] &gt; 0) left[i] = left[i - 1] - 1;
+            
+        &#125;
+        
+        for(int i = n - 1; i &gt;= 0; i--) &#123;
+            if(dominoes[i] == &#39;L&#39;) right[i] = n;
+            else if(dominoes[i] == &#39;R&#39;) continue;
+            else if(i != n - 1 &amp;&amp; right[i + 1] &gt; 0) right[i] = right[i + 1] - 1;
+        &#125;
+        
+        for(int i = 0; i &lt; n; i++) &#123;
+            if(left[i] &gt; right[i]) ans[i] = &#39;R&#39;;
+            else if(left[i] &lt; right[i]) ans[i] = &#39;L&#39;;
+            else ans[i] = &#39;.&#39;;
+        &#125;
+        
+        for_each(left.begin(), left.end(), print);
+        cout &lt;&lt; endl;
+        for_each(right.begin(), right.end(), print);
+        cout &lt;&lt; endl;
+        
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/838.%20Push%20Dominoes/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/834.%20Sum%20of%20Distances%20in%20Tree/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="834-Sum-of-Distances-in-Tree"><a href="#834-Sum-of-Distances-in-Tree" class="headerlink" title="834. Sum of Distances in Tree"></a>834. Sum of Distances in Tree</h1><h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h2><p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 3 * 104</code></li>
+<li><code>edges.length == n - 1</code></li>
+<li><code>edges[i].length == 2</code></li>
+<li><code>0 &lt;= ai, bi &lt; n</code></li>
+<li><code>ai != bi</code></li>
+<li>The given input represents a valid tree.</li>
+</ul>
+<p>Because of that, the algorithm must be $O(n)$, so must analyze the relation between each nodes</p>
+<img src="834. Sum of Distances in Tree.assets/sketch1.png" alt="Tree diagram illustrating recurrence for ans[child]" style="zoom: 25%;" />
+
+<p><code>#Y</code> represent the node number of Y subtree.</p>
+<p><code>anx[y] = x@X + y@Y + #(X)</code>, so <code>ans[x] - ans[y] = #(Y) - #(X)</code></p>
+<p>So, first we search from root to leaves to get the distance from root to every node, then we use the equation above to iterate to get the answer, like the picture below</p>
+<img src="834. Sum of Distances in Tree.assets/sketch2.png" alt="Tree diagram illustrating recurrence for ans[child]" style="zoom: 25%;" />
+
+<pre><code class="c++">class Solution &#123;
+private:
+    unordered_map&lt;int, vector&lt;int&gt;&gt; graph;
+    vector&lt;int&gt; count, dis, ans;
+    
+    inline void dfs1(int root = 0, int parent = -1) &#123;        
+        for(auto node : graph[root]) &#123;
+            if(node == parent) continue;
+            dfs1(node, root);
+            count[root] += count[node];
+            dis[root] += dis[node] + count[node];
+        &#125;
+    &#125;
+    
+    inline void dfs2(int root = 0, int parent = -1) &#123;
+        for(auto node : graph[root]) &#123;
+            if(node == parent) continue;
+            int n = count.size();
+            ans[node] = ans[root] + (n - count[node]) - count[node];
+            dfs2(node, root);
+        &#125;
+    &#125;
+public:
+    vector&lt;int&gt; sumOfDistancesInTree(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges) &#123;
+        count.resize(n, 1), dis.resize(n, 0), ans.resize(n, 0);
+        int m = edges.size();
+        for(int i = 0; i &lt; m; i++) &#123;
+            int u = edges[i][0], v = edges[i][1];
+            graph[u].push_back(v);
+            graph[v].push_back(u);
+        &#125;
+        dfs1();
+        ans[0] = dis[0];
+        dfs2();
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/834.%20Sum%20of%20Distances%20in%20Tree/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/790.%20Domino%20and%20Tromino%20Tiling/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="790-Domino-and-Tromino-Tiling"><a href="#790-Domino-and-Tromino-Tiling" class="headerlink" title="790. Domino and Tromino Tiling"></a>790. Domino and Tromino Tiling</h1><p>![img](790. Domino and Tromino Tiling.assets&#x2F;lc-domino.jpg)</p>
+<p>方块填补动态规划，具体分为D型和T型的长条</p>
+<p>![image-20221224164838253](790. Domino and Tromino Tiling.assets&#x2F;image-20221224164838253.png)</p>
+<p>状态转移方程如图所示</p>
+<p>源码</p>
+<pre><code class="c++">class Solution &#123;
+private:
+    int mod = (int)(1e9 + 7);
+public:
+    int numTilings(int n) &#123;
+        vector&lt;long&gt; T(n + 1, 0), D(n + 1, 0);
+        D[0] = 1;
+        if(n &gt;= 1) &#123;
+            D[1] = 1;
+        &#125; 
+        if(n &gt;= 2) &#123;
+            D[2] = 2;
+            T[2] = 2;
+        &#125;
+
+        for(int i = 3; i &lt;= n; i++) &#123;
+            D[i] += ((D[i - 2] + D[i - 1]) % mod  + T[i - 1]) % mod;
+            T[i] += ((D[i - 2] * 2) % mod + T[i - 1]) % mod;
+        &#125;
+
+        return D[n] % (int)(1e9 + 7);
+    &#125;
+&#125;;
+</code></pre>
+<p>注意此时应该用0表示一个都没铺，而不是铺了一个</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/790.%20Domino%20and%20Tromino%20Tiling/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/767.%20Reorganize%20String/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="767-Reorganize-String"><a href="#767-Reorganize-String" class="headerlink" title="767. Reorganize String"></a>767. Reorganize String</h1><p><strong>思路：</strong></p>
+<p>取堆上数量最多的两个字母，然后<strong>交错</strong>排序。因为是交错排序，因此，要分别用<code>cur</code>，<code>prev</code>的结构</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    string reorganizeString(string s) &#123;
+        unordered_map&lt;char, int&gt; m;
+        for(char c : s) m[c]++;
+        priority_queue&lt;pair&lt;int, char&gt;&gt; h;
+        for(auto p : m) h.push(&#123;p.second, p.first&#125;);
+        pair&lt;int, char&gt; prev = &#123;0, &#39;#&#39;&#125;, cur;
+        string ans;
+        while(h.size()) &#123;
+            cur = h.top();
+            h.pop();
+            ans += cur.second;
+            cur.first--;
+            if(prev.first &gt; 0) h.push(prev);
+            prev = cur;
+        &#125;
+        cout &lt;&lt; ans &lt;&lt; endl;
+        return ans.size() == s.size() ? ans : &quot;&quot;;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/767.%20Reorganize%20String/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -215,8 +846,23 @@
         
         <span class="current">1</span>
         
+        <span>
+            <a class="page-num" href="/page/2/">2</a>
+            
+            <a class="page-num" href="/page/3">3</a>
+            
+            
+            <span class="page-omit">...</span>
+            <a class="page-num" href="/page/5">5</a>
+            
+        </span>
+        
     </div>
     <div class="next">
+        
+        <a class="page-num" href="/page/2/">
+            <i class="fa-solid fa-caret-right fa-fw"></i>
+        </a>
         
     </div>
 </div>

@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="990-Satisfiability-of-Equality-Equations"><a href="#990-Satisfiability-of-Equality-Equations" class="headerlink" title="990. Satisfiability of Equality Equations"></a>990. Satisfiability of Equality Equations</h1><h2 id="Core"><a href="#Core" class="headerlink" title="Core:"></a>Core:</h2><h3 id="Find-Union"><a href="#Find-Union" class="headerlink" title="Find-Union"></a><strong>Find-Union</strong></h3><h4 id="合并："><a href="#合并：" class="headerlink" title="合并："></a>合并：</h4><p>​	要合并两棵树，我们只需要将一棵树的根节点连到另一棵树的根节点。</p>
+<pre><code class="c++">void unite(size_t x, size_t y) &#123;
+    pa[find(x)] = find(y);
+&#125;
+</code></pre>
+<p>合并时，选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度。我们可以将节点较少或深度较小的树连到另一棵，以免发生退化，这种被称为<strong>启发式合并</strong></p>
+<pre><code class="c++">// C++ Version
+struct dsu &#123;
+    vector&lt;size_t&gt; pa, size;
+
+    explicit dsu(size_t _size): pa(_size), size(_size, 1) &#123;
+        iota(pa.begin(), pa.end(), 0);
+    &#125;
+
+    void unite(size_t x, size_t y) &#123;
+        x = find(x), y = find(y);
+        if (x == y) return;
+        if (size[x] &lt; size[y]) swap(x, y);
+        pa[y] = x;
+        size[x] += size[y];
+    &#125;
+&#125;
+</code></pre>
+<h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩:"></a>路径压缩:</h4><p>在合并中，由于我们只是将根节点合并到了新的树里，但根节点的子节点还是指向该根节点，因此可以进行路径压缩。查询过程中经过的每个元素都属于该集合，我们可以将其直接连到根节点以加快后续查询。</p>
+<p><img src="https://oi-wiki.org/ds/images/disjoint-set-compress.svg" alt="img"></p>
+<pre><code class="c++">
+// C++ Version
+size_t find(size_t x) &#123;
+    //                       ↓ very important
+    return pa[x] == x ? x : pa[x] = find(pa[x]);
+&#125;
+</code></pre>
+<p>本题代码：</p>
+<pre><code class="c++">class Solution &#123;
+private:
+    int uf[26];
+    inline int find(int x) &#123;return uf[x] == x ? x : (uf[x] = find(uf[x]));&#125;
+public:
+    bool equationsPossible(vector&lt;string&gt;&amp; equations) &#123;
+        int n = equations.size();
+        for(int i = 0; i &lt; 26; i++) uf[i] = i;
+        
+        for(string s : equations) &#123;
+            if(s[1] == &#39;=&#39;) &#123;
+                uf[find(s[0] - &#39;a&#39;)] = uf[find(s[3] - &#39;a&#39;)];
+            &#125;
+        &#125;
+        
+        for(string s : equations) &#123;
+            if(s[1] == &#39;!&#39; &amp;&amp; find(s[0] - &#39;a&#39;) == find(s[3] - &#39;a&#39;)) return false;
+        &#125;
+        
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>

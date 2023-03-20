@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-image="https://raw.githubusercontent.com/USBskycrafts/Picture-Bed/a79f77632968e89bbbc275d5eeb614090e1ac030/IMG_7159.JPG"></div>
+    
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Blog of Junran Yang</h1>
+                <h3></h3>
+                <h5>a blog to record daily life</h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2023/03/20/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1578-Minimum-Time-to-Make-Rope-Colorful"><a href="#1578-Minimum-Time-to-Make-Rope-Colorful" class="headerlink" title="1578. Minimum Time to Make Rope Colorful"></a>1578. Minimum Time to Make Rope Colorful</h1><h2 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h2><p>样例</p>
+<pre><code class="javascript">&quot;bbbaaa&quot; 
+[4,9,3,8,8,9]
+</code></pre>
+<p>表明，优先队列必须要用<code>while(q.size() &gt; 1)</code>排空，而不能仅仅只用<code>if(q.size() &gt; 1)</code></p>
+<pre><code class="c++">class Solution &#123;
+public:
+    int minCost(string colors, vector&lt;int&gt;&amp; neededTime) &#123;
+        priority_queue&lt;int, vector&lt;int&gt; , greater&lt;int&gt;&gt; q;
+        int n = colors.size();
+        q.push(neededTime[0]);
+        int ans = 0;
+        for(int i = 1; i &lt; n; i++) &#123;
+            if(colors[i] != colors[i - 1]) &#123;
+                while(q.size() &gt; 1) &#123;
+                    ans += q.top();
+                    q.pop();
+                &#125;
+                q.pop();
+            &#125;
+            q.push(neededTime[i]);
+        &#125;
+        while(q.size() &gt; 1) &#123;
+            ans += q.top();
+            q.pop();
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/1834.%20Single-Threaded%20CPU/">
+        <h2 class="post-title">Single-Threaded CPU</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1834-Single-Threaded-CPU"><a href="#1834-Single-Threaded-CPU" class="headerlink" title="1834. Single-Threaded CPU"></a>1834. Single-Threaded CPU</h1><p>思路：</p>
+<p>滑动的阈值（time）</p>
+<p>踩坑点：</p>
+<ol>
+<li>小顶堆的排序方法必须要使用<code>&gt;</code>，与正常相反<pre><code>class Solution {
+private:
+    struct cmp {
+        bool operator()(vector&lt;int&gt; const&amp; a, vector&lt;int&gt; const&amp; b) {
+            if(a[1] !&#x3D; b[1]) return a[1] &gt; b[1];
+            else return a[2] &gt; b[2];
+        }
+    };
+public:
+    vector&lt;int&gt; getOrder(vector&lt;vector&lt;int&gt;&gt;&amp; tasks) {
+        int n &#x3D; tasks.size();
+        for(int i &#x3D; 0; i &lt; n; i++) {
+            tasks[i].push_back(i);
+        }
+
+        sort(tasks.begin(), tasks.end());
+        
+        priority_queue&lt;vector&lt;int&gt;, vector&lt;vector&lt;int&gt;&gt;, cmp&gt; q;
+        vector&lt;int&gt; ans;
+
+        long time &#x3D; tasks[0][0], i &#x3D; 1;
+        q.push(tasks[0]);
+
+        while(!q.empty()) {
+            
+            auto p &#x3D; q.top();
+            q.pop();
+            time &#x3D; max(time + p[1], (long)(p[0] + p[1]));
+            ans.push_back(p[2]);
+
+            while(i &lt; n &amp;&amp; (q.empty() || time &gt;&#x3D; tasks[i][0])) {
+                q.push(tasks[i++]);
+            }
+        }
+
+        return ans;
+
+    }
+};
+</code></pre></li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/algorithm/" style="color: #00bcd4">
+                algorithm
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/20/1834.%20Single-Threaded%20CPU/" class="go-post">阅读全文</a>
+</div>
+
+
+            <div class="page-current">
+    <div class="prev">
+        
+        <a class="page-num" href="/page/4/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            <a class="page-num" href="/">1</a>
+            <span class="page-omit">...</span>
+            
+            
+                
+                
+                <a class="page-num" href="/page/3">3</a>
+                
+            
+            <a class="page-num" href="/page/4/">4</a>
+        </span>
+        
+        <span class="current">5</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" alt="avatar" />
+        </div>
+        <div class="name">Junran Yang(杨竣然)</div>
+        <div class="description">
+            <p>Grad student in Northwestern University</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a href="/">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>

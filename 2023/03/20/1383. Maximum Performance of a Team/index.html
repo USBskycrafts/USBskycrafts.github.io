@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="1383-Maximum-Performance-of-a-Team"><a href="#1383-Maximum-Performance-of-a-Team" class="headerlink" title="1383. Maximum Performance of a Team"></a>1383. Maximum Performance of a Team</h1><h2 id="DP解法（WA）"><a href="#DP解法（WA）" class="headerlink" title="DP解法（WA）"></a>DP解法（WA）</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxPerformance(int n, vector&lt;int&gt;&amp; speed, vector&lt;int&gt;&amp; efficiency, int k) &#123;
+        long long dp[n + 1][k + 1];
+        int sum[n + 1][k + 1], eff_min[n + 1][k + 1];
+        const int mod = (int)1e9 + 7;
+        memset(dp, 0, sizeof(dp));
+        memset(sum, 0, sizeof(sum));
+        memset(eff_min, 0x7f, sizeof(eff_min));
+        
+        for(int i = 1; i &lt;= n; i++) &#123;
+            for(int j = 1; j &lt;= k; j++) &#123;
+                long long count = ((sum[i - 1][j - 1] + speed[i - 1]) * (long long)min(efficiency[i - 1], eff_min[i - 1][j - 1]));
+                sum[i][j] = (dp[i - 1][j] &lt; count ? (sum[i - 1][j - 1] + speed[i - 1]) : sum[i - 1][j]);
+                dp[i][j] = max(dp[i - 1][j], count);
+                eff_min[i][j] = (dp[i - 1][j] &lt; count ? min(efficiency[i - 1], eff_min[i - 1][j - 1]) : eff_min[i - 1][j]);               
+            &#125;
+        &#125;
+        
+        int ans = 0;
+        for(int j = 1; j &lt;= k; j++) ans = max(ans, (int)dp[n][j] % mod);
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>为什么会WA？：</p>
+<ol>
+<li><pre><code class="javascript">input:
+11
+[2,10,3,1,5,8,1,2,3,1,1]
+[5,4,3,9,7,2,12,12,13,44,4]
+4
+
+output:
+80
+
+expect:
+84
+</code></pre>
+<p>分析：</p>
+</li>
+<li></li>
+</ol>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxPerformance(int n, vector&lt;int&gt;&amp; speed, vector&lt;int&gt;&amp; efficiency, int k) &#123;
+        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; speed_list;
+        vector&lt;pair&lt;int, int&gt;&gt; eng;
+        int mod = (int)1e9 + 7;
+        
+        for(int i = 0; i &lt; n; i++) eng.push_back(&#123;efficiency[i], speed[i]&#125;);
+        sort(eng.rbegin(), eng.rend());
+        
+        long long ans = 0, speed_count = 0;
+        for(int i = 0; i &lt; n; i++) &#123;
+            speed_list.push(eng[i].second);
+            speed_count += eng[i].second;
+            if(speed_list.size() &gt; k) &#123;
+                speed_count -= speed_list.top();
+                speed_list.pop();
+            &#125;
+            ans = max(ans, (long long)eng[i].first * speed_count);
+        &#125;
+        return ans % mod;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>note:</strong></p>
+<ol>
+<li>将数组按<code>efficiency</code>从大到小排列，并且用一个小顶堆储存<code>speed</code>，目的在于保障迭代到当前第<code>i</code>个元素时，前<code>i</code>个元素的<code>effiency</code>更大的情况下，存下前<code>k</code>大的<code>speed</code>元素，并要记录它们的和</li>
+<li>数据结构构造思路：“最小的<code>effiency</code>&#x3D;&#x3D;&#x3D;&gt;按照从大到小排列好的数据，前<code>k</code>大的<code>speed</code>”&#x3D;&#x3D;&#x3D;&gt;大顶堆小顶堆均可，但此题中我们要把最小的<code>speed</code>抛出，因此使用小顶堆</li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>

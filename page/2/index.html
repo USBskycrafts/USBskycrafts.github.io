@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-image="https://raw.githubusercontent.com/USBskycrafts/Picture-Bed/a79f77632968e89bbbc275d5eeb614090e1ac030/IMG_7159.JPG"></div>
+    
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Blog of Junran Yang</h1>
+                <h3></h3>
+                <h5>a blog to record daily life</h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2023/03/20/729.%20My%20Calendar%20I/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="729-My-Calendar-I"><a href="#729-My-Calendar-I" class="headerlink" title="729. My Calendar I"></a>729. My Calendar I</h1><p>You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a <strong>double booking</strong>.</p>
+<p>A <strong>double booking</strong> happens when two events have some non-empty intersection (i.e., some moment is common to both events.).</p>
+<p>The event can be represented as a pair of integers <code>start</code> and <code>end</code> that represents a booking on the half-open interval <code>[start, end)</code>, the range of real numbers <code>x</code> such that <code>start &lt;= x &lt; end</code>.</p>
+<p>Implement the <code>MyCalendar</code> class:</p>
+<ul>
+<li><p><code>MyCalendar()</code> Initializes the calendar object.</p>
+</li>
+<li><p><code>boolean book(int start, int end)</code> Returns <code>true</code> if the event can be added to the calendar successfully without causing a <strong>double booking</strong>. Otherwise, return <code>false</code> and do not add the event to the calendar.</p>
+<p>  class MyCalendar {<br>  private:<br>  map&lt;int, int&gt; m;<br>  public:<br>  MyCalendar() {<br><br>  }<br><br>  bool book(int start, int end) {<br>      auto next &#x3D; m.upper_bound(start);<br>      if(next !&#x3D; m.end() &amp;&amp; next-&gt;second &lt; end) return false;<br>      else {<br>          m.insert({end, start});<br>          return true;<br>      }<br>  }<br>  };</p>
+</li>
+</ul>
+<p>笔记：</p>
+<ul>
+<li>二分查找(upper_bound)<strong>大于start</strong>的end的值，从而避免手写二分查找&lt;&#x3D;end的算法</li>
+<li>upper_bound查找end - 1也可以</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/729.%20My%20Calendar%20I/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/732.%20My%20Calendar%20III%EF%BC%88%E7%BA%BF%E6%AE%B5%E6%A0%91%EF%BC%89/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="732-My-Calendar-III（线段树）"><a href="#732-My-Calendar-III（线段树）" class="headerlink" title="732. My Calendar III（线段树）"></a>732. My Calendar III（线段树）</h1><pre><code class="c++">class MyCalendarThree &#123;
+private:
+    unordered_map&lt;int, int&gt; vals;
+    unordered_map&lt;int, int&gt; lazy;
+
+public:
+    MyCalendarThree() &#123;&#125;
+
+    void update(int start, int end, int left, int right, int idx) &#123;
+        if (start &gt; right || end &lt; left) return;
+        if (left &gt;= start &amp;&amp; right &lt;= end) &#123;
+            lazy[idx]++;
+            vals[idx]++;
+        &#125; else &#123;
+            int mid = (left + right) / 2;
+            update(start, end, left, mid, idx * 2);
+            update(start, end, mid + 1, right, idx * 2 + 1);
+            vals[idx] = lazy[idx] + max(vals[idx * 2], vals[idx * 2 + 1]);
+        &#125;
+    &#125;
+
+    int book(int start, int end) &#123;
+        update(start, end - 1, 1, 1000000000, 1);
+        return vals[1];
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/732.%20My%20Calendar%20III%EF%BC%88%E7%BA%BF%E6%AE%B5%E6%A0%91%EF%BC%89/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/658.%20Find%20K%20Closest%20Elements/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="658-Find-K-Closest-Elements"><a href="#658-Find-K-Closest-Elements" class="headerlink" title="658. Find K Closest Elements"></a>658. Find K Closest Elements</h1><h3 id="核心思路："><a href="#核心思路：" class="headerlink" title="核心思路："></a>核心思路：</h3><ol>
+<li>剪掉k后重新排序，注意题目要求的排序规则</li>
+<li>最后再把k加回来重新排序，满足题目升序要求</li>
+</ol>
+<pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; findClosestElements(vector&lt;int&gt;&amp; arr, int k, int x) &#123;
+        int n = arr.size();
+        for(int i = 0; i &lt; n; i++) &#123;
+            arr[i] -= x;
+        &#125;
+        auto cmp = [&amp;](int a, int b) &#123;
+            if(a == -b) return a + x &lt; b + x;
+            else return abs(a) &lt; abs(b);
+        &#125;;
+        sort(arr.begin(), arr.end(), cmp);
+        
+        vector&lt;int&gt; ans;
+        for(int i = 0; i &lt; k; i++) ans.push_back(arr[i] + x);
+        sort(ans.begin(), ans.end());
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/658.%20Find%20K%20Closest%20Elements/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/622.%20Design%20Circular%20Queue/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="622-Design-Circular-Queue"><a href="#622-Design-Circular-Queue" class="headerlink" title="622. Design Circular Queue"></a>622. Design Circular Queue</h1><p><strong>教训:</strong></p>
+<ol>
+<li>一定要添加元素个数<code>n</code></li>
+<li>初始化时，<code>front = 0</code>，<code>rear = -1</code></li>
+</ol>
+<pre><code class="c++">class MyCircularQueue &#123;
+private:
+    int n = 0, k, front = 0, rear = -1;
+    vector&lt;int&gt; q;
+public:
+    MyCircularQueue(int k) &#123;
+        this-&gt;k = k;
+        q.resize(k, 0);
+    &#125;
+    
+    bool enQueue(int value) &#123;
+        if(n == k) return false;
+        rear = (rear + 1) % k;
+        q[rear] = value;
+        n++;
+        return true;
+    &#125;
+    
+    bool deQueue() &#123;
+        if(n == 0) return false;
+        
+        front = (front + 1) % k;
+        n--;
+        return true;
+    &#125;
+    
+    int Front() &#123;
+        if(n == 0) return -1;
+        return q[front];
+    &#125;
+    
+    int Rear() &#123;
+        if(n == 0) return -1;
+        return q[rear];
+    &#125;
+    
+    bool isEmpty() &#123;
+        return n == 0;
+    &#125;
+    
+    bool isFull() &#123;
+        return n == k;
+    &#125;
+&#125;;
+
+/**
+ * Your MyCircularQueue object will be instantiated and called as such:
+ * MyCircularQueue* obj = new MyCircularQueue(k);
+ * bool param_1 = obj-&gt;enQueue(value);
+ * bool param_2 = obj-&gt;deQueue();
+ * int param_3 = obj-&gt;Front();
+ * int param_4 = obj-&gt;Rear();
+ * bool param_5 = obj-&gt;isEmpty();
+ * bool param_6 = obj-&gt;isFull();
+ */
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/622.%20Design%20Circular%20Queue/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/523.%20Continuous%20Subarray%20Sum/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="523-Continuous-Subarray-Sum"><a href="#523-Continuous-Subarray-Sum" class="headerlink" title="523. Continuous Subarray Sum"></a>523. Continuous Subarray Sum</h1><h2 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h2><p>$(sum[r + 1] - sum[l]) % k &#x3D; 0$ 变换为$sum[r + 1] % k &#x3D; sum[l] % k$，因此用hash存储标号，注意<strong>长度至少为2</strong></p>
+<pre><code class="c++">class Solution &#123;
+public:
+    bool checkSubarraySum(vector&lt;int&gt;&amp; nums, int k) &#123;
+        int tot = 0, n = nums.size();
+        unordered_map&lt;int, int&gt; m = &#123;&#123;0, 0&#125;&#125;;
+        for(int i = 0; i &lt; n; i++) &#123;
+            tot += nums[i];
+            if(!m.count(tot % k)) m[tot % k] = i + 1;
+            else if(m[tot % k] &lt; i) return true;
+        &#125;
+        return false;
+    &#125;
+&#125;;
+</code></pre>
+<p>注意点：</p>
+<ol>
+<li>要初始化为{0, 0}，因为要考虑从头开始全选的情况</li>
+<li>要注意上一个<code>m[tot % k]</code>至少要2长度</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/523.%20Continuous%20Subarray%20Sum/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/336.%20Palindrome%20Pairs/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="336-Palindrome-Pairs"><a href="#336-Palindrome-Pairs" class="headerlink" title="336. Palindrome Pairs"></a>336. Palindrome Pairs</h1><h2 id="前缀数组"><a href="#前缀数组" class="headerlink" title="前缀数组"></a>前缀数组</h2><p>由于在本题中，由于需要匹配字符串的前缀，因此我们需要构造一个前缀树，同时在每个<code>TrieNode</code>节点还需要记录子节点是否存在对称的字符串，因此可以构造如下的<code>TireNode</code></p>
+<p>![image-20220917170355236](336. Palindrome Pairs.assets&#x2F;image-20220917170355236.png “1, 3, 4三种情况”)</p>
+<pre><code class="c++">struct TrieNode &#123;
+        TrieNode* children[26];
+        int index = -1;
+        vector&lt;int&gt; restIsPal;
+&#125;;
+</code></pre>
+<p>相比传统的前缀树，多出记录剩下的结点是否为对称节点的<code>vector&lt;int&gt; restIsPal</code>来记录节点标号<code>index</code></p>
+<pre><code class="c++">class Solution &#123;
+private:
+    struct TrieNode &#123;
+        TrieNode* children[26];
+        int index = -1;
+        vector&lt;int&gt; restIsPal;
+    &#125;;
+    
+    TrieNode *root = new TrieNode();
+    vector&lt;vector&lt;int&gt;&gt; ans;
+    
+    bool isPal(string &amp;s, int i, int j) &#123;
+        while(i &lt; j) &#123;
+            if(s[i++] != s[j--]) return false;
+        &#125;
+        return true;
+    &#125;
+    void add(string &amp;s, int index) &#123;
+        TrieNode *cur = root;
+        for(int i = s.size() - 1; i &gt;= 0; i--) &#123;
+            int p = s[i] - &#39;a&#39;;
+            if(!cur-&gt;children[p]) cur-&gt;children[p] = new TrieNode();
+            if(isPal(s, 0, i)) cur-&gt;restIsPal.push_back(index);
+            cur = cur-&gt;children[p];
+        &#125;
+        cur-&gt;index = index;
+    &#125;
+    
+    void search(string &amp;s, int index) &#123;
+        TrieNode* cur = root;
+        for(int i = 0; i &lt; s.size(); i++) &#123;
+            int p = s[i] - &#39;a&#39;;
+            if(cur-&gt;index != -1 &amp;&amp; isPal(s, i, s.size() - 1)) ans.push_back(&#123;index, cur-&gt;index&#125;);
+            if(cur-&gt;children[p] == nullptr) return;
+            cur = cur-&gt;children[p];
+        &#125;
+        if(cur-&gt;index != -1 &amp;&amp; index != cur-&gt;index) ans.push_back(&#123;index, cur-&gt;index&#125;);
+        for(int i : cur-&gt;restIsPal) ans.push_back(&#123;index, i&#125;);
+    &#125;
+public:
+    vector&lt;vector&lt;int&gt;&gt; palindromePairs(vector&lt;string&gt;&amp; words) &#123;
+        int n = words.size();
+        for(int i = 0; i &lt; n; i++) &#123;
+            add(words[i], i);
+        &#125;
+        
+        for(int i = 0; i &lt; n; i++) &#123;
+            search(words[i], i);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>其中<code>add(string s, int index)</code>构建<code>Tire</code>，<code>search(string s, int index)</code>用于搜索当前字符串是否存在一个倒叙相等<code>if(cur-&gt;index != -1 &amp;&amp; index != cur-&gt;index)</code>&#x2F;倒叙子串<code>if(cur-&gt;index != -1 &amp;&amp; isPal(s, i, s.size() - 1))</code>，是否为某个字符串的倒叙子串<code>for(int i : cur-&gt;restIsPal) ans.push_back(&#123;index, i&#125;)</code></p>
+<p><strong>Note</strong></p>
+<ol>
+<li>由于我们要处理<code>restIsPal</code>，因此当前<code>i</code>所在的<code>TrieNode</code>并不是<code>i</code>对应的节点，而是其父节点</li>
+<li><code>search</code>时，注意要判子节点是否为空<code>if(cur-&gt;children[p] == nullptr) return;</code></li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/336.%20Palindrome%20Pairs/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/393.%20UTF-8%20Validation/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="393-UTF-8-Validation"><a href="#393-UTF-8-Validation" class="headerlink" title="393. UTF-8 Validation"></a>393. UTF-8 Validation</h1><h2 id="位运算："><a href="#位运算：" class="headerlink" title="位运算："></a>位运算：</h2><pre><code class="c++">class Solution &#123;
+public:
+    bool validUtf8(vector&lt;int&gt;&amp; data) &#123;
+        int n = data.size(), status = 0;
+        for(int i = 0; i &lt; n; i++) &#123;
+            int mask = 1 &lt;&lt; 7, prefix = data[i], count = 0;
+            while(mask &amp; prefix) &#123;
+                count++;
+                mask = mask &gt;&gt; 1;
+            &#125;
+            if(count &gt; 4) return false;
+            if(count &gt; 1) &#123;
+                if(status &gt; 0) return false;
+                status += count - 1;
+            &#125; else if(count == 1) &#123;
+                status--;
+            &#125;
+            
+        &#125;
+        return status == 0;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>“1”的数量大于4时，直接<code>return false;</code></li>
+<li><code>count &gt; 1</code>时’status &gt; 0’意味着<code>byte</code>数与“1”的数量不符，<code>return false;</code></li>
+<li>保证最后加减相抵消，即可保证算法正确性</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/393.%20UTF-8%20Validation/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/290.%20Word%20Pattern/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="290-Word-Pattern"><a href="#290-Word-Pattern" class="headerlink" title="290. Word Pattern"></a>290. Word Pattern</h1><h1 id="踩坑点："><a href="#踩坑点：" class="headerlink" title="踩坑点："></a>踩坑点：</h1><ol>
+<li>c++ 下如何split：</li>
+</ol>
+<p>​	对于<code> &quot; &quot;</code>来说，可以使用sstream来进行分割</p>
+<pre><code class="c++">stringstream ss(s);
+istream_iterator&lt;string&gt; begin(ss), end;
+vector&lt;string&gt; s_arr(begin, end);
+</code></pre>
+<ol start="2">
+<li>相互映射，不止<code>string-&gt;char</code>，还得<code>char-&gt;string</code></li>
+</ol>
+<p>源代码：</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    bool wordPattern(string pattern, string s) &#123;
+        stringstream ss(s);
+        istream_iterator&lt;string&gt; begin(ss), end;
+        vector&lt;string&gt; s_arr(begin, end);
+        if(pattern.size() != s_arr.size()) return false;
+        int n = pattern.size();
+        unordered_map&lt;char, string&gt; m;
+        unordered_map&lt;string, char&gt; h;
+        for(int i = 0; i &lt; n; i++) &#123;
+            if(m.count(pattern[i]) == 0 &amp;&amp; h.count(s_arr[i]) == 0) &#123;
+                m[pattern[i]] = s_arr[i];
+                h[s_arr[i]] = pattern[i];
+            &#125; else if(m[pattern[i]] != s_arr[i] || h[s_arr[i]] != pattern[i]) &#123;
+                return false;
+            &#125;
+        &#125;
+        return  true;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/290.%20Word%20Pattern/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/732.%20My%20Calendar%20III/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="732-My-Calendar-III"><a href="#732-My-Calendar-III" class="headerlink" title="732. My Calendar III"></a>732. My Calendar III</h1><h2 id="核心思想：扫描线段"><a href="#核心思想：扫描线段" class="headerlink" title="核心思想：扫描线段"></a>核心思想：扫描线段</h2><p>用一个<code>map</code>记录多个线段的起点和终点，起点++，终点–，最后从小到大扫描<code>map</code>，记录最大的重叠部分</p>
+<pre><code class="c++">class MyCalendarThree &#123;
+private:
+    map&lt;int, int&gt; m;
+public:
+    MyCalendarThree() &#123;
+        
+    &#125;
+    
+    int book(int start, int end) &#123;
+        m[start]++;
+        m[end]--;
+        int ans = 0, lad = 0;
+        for(auto &amp;[_, num] : m) &#123;
+            lad += num;
+            ans = max(ans, lad);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+
+/**
+ * Your MyCalendarThree object will be instantiated and called as such:
+ * MyCalendarThree* obj = new MyCalendarThree();
+ * int param_1 = obj-&gt;book(start,end);
+ */
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/732.%20My%20Calendar%20III/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/218.%20The%20Skyline%20Problem/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="218-The-Skyline-Problem"><a href="#218-The-Skyline-Problem" class="headerlink" title="218. The Skyline Problem"></a>218. The Skyline Problem</h1><p><strong>踩坑记录</strong></p>
+<ol>
+<li>要处理单横坐标点上存在多个建筑的情况</li>
+<li>用于存储的二维数组，横坐标要从小到大排序，而高度要从大到小排序才能保证天际线不会因为单坐标点上出现多个建筑导致结果“冗余”</li>
+<li>由于单坐标点存在多个建筑，因此不能再维护一个单调数组（’c++中可用<code>set</code>实现）了，而是应该使用map来记录每个横坐标点上的建筑数量</li>
+</ol>
+<p>代码：</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;vector&lt;int&gt;&gt; getSkyline(vector&lt;vector&lt;int&gt;&gt;&amp; buildings) &#123;
+        vector&lt;pair&lt;int, int&gt;&gt; key_points;
+        
+        for(auto building : buildings) &#123;
+            int left = building[0], right = building[1], height = building[2];
+            key_points.push_back(&#123;left, height&#125;);
+            key_points.push_back(&#123;right, -height&#125;);
+        &#125;
+        sort(key_points.begin(), key_points.end(), [](auto a, auto b) &#123;
+            if(a.first == b.first) return a.second &gt; b.second;
+            else return a.first &lt; b.first;
+        &#125;);
+        map&lt;int, int, greater&lt;int&gt;&gt; points;
+        vector&lt;vector&lt;int&gt;&gt; ans;
+        int max_height = 0;
+        for(auto &amp;[index, height] : key_points) &#123;
+            if(height &gt; 0) points[height]++;
+            else points[-height]--;
+            if(points[abs(height)] == 0) points.erase(abs(height));
+            int top = points.begin()-&gt;first;
+            if(top != max_height)ans.push_back(&#123;index, top&#125;);
+            max_height = top;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/218.%20The%20Skyline%20Problem/" class="go-post">阅读全文</a>
+</div>
+
+
+            <div class="page-current">
+    <div class="prev">
+        
+        <a class="page-num" href="/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            
+            <a class="page-num" href="/">1</a>
+        </span>
+        
+        <span class="current">2</span>
+        
+        <span>
+            <a class="page-num" href="/page/3/">3</a>
+            
+            <a class="page-num" href="/page/4">4</a>
+            
+            
+            <span class="page-omit">...</span>
+            <a class="page-num" href="/page/5">5</a>
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a class="page-num" href="/page/3/">
+            <i class="fa-solid fa-caret-right fa-fw"></i>
+        </a>
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" alt="avatar" />
+        </div>
+        <div class="name">Junran Yang(杨竣然)</div>
+        <div class="description">
+            <p>Grad student in Northwestern University</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a href="/">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>

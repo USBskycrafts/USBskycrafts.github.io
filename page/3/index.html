@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-image="https://raw.githubusercontent.com/USBskycrafts/Picture-Bed/a79f77632968e89bbbc275d5eeb614090e1ac030/IMG_7159.JPG"></div>
+    
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Blog of Junran Yang</h1>
+                <h3></h3>
+                <h5>a blog to record daily life</h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2023/03/20/300.%20Longest%20Increasing%20Subsequence/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="300-Longest-Increasing-Subsequence"><a href="#300-Longest-Increasing-Subsequence" class="headerlink" title="300. Longest Increasing Subsequence"></a>300. Longest Increasing Subsequence</h1><p><strong>✔️ Solution 2: Greedy with Binary Search</strong></p>
+<ul>
+<li><p>Let’s construct the idea from following example.</p>
+</li>
+<li><p>Consider the example</p>
+<pre><code>nums = [2, 6, 8, 3, 4, 5, 1]
+</code></pre>
+<p>, let’s try to build the increasing subsequences starting with an empty one:</p>
+<pre><code>sub1 = []
+</code></pre>
+<p>.</p>
+<ol>
+<li>Let pick the first element, <code>sub1 = [2]</code>.</li>
+<li><code>6</code> is greater than previous number, <code>sub1 = [2, 6]</code></li>
+<li><code>8</code> is greater than previous number, <code>sub1 = [2, 6, 8]</code></li>
+<li><code>3</code> is less than previous number, we can’t extend the subsequence <code>sub1</code>, but we must keep <code>3</code> because in the future there may have the longest subsequence start with <code>[2, 3]</code>, <code>sub1 = [2, 6, 8], sub2 = [2, 3]</code>.</li>
+<li>With <code>4</code>, we can’t extend <code>sub1</code>, but we can extend <code>sub2</code>, so <code>sub1 = [2, 6, 8], sub2 = [2, 3, 4]</code>.</li>
+<li>With <code>5</code>, we can’t extend <code>sub1</code>, but we can extend <code>sub2</code>, so <code>sub1 = [2, 6, 8], sub2 = [2, 3, 4, 5]</code>.</li>
+<li>With <code>1</code>, we can’t extend neither <code>sub1</code> nor <code>sub2</code>, but we need to keep <code>1</code>, so <code>sub1 = [2, 6, 8], sub2 = [2, 3, 4, 5], sub3 = [1]</code>.</li>
+<li>Finally, length of longest increase subsequence &#x3D; <code>len(sub2)</code> &#x3D; 4.</li>
+</ol>
+</li>
+<li><p><strong>In the above steps, we need to keep different <code>sub</code> arrays (<code>sub1</code>, <code>sub2</code>…, <code>subk</code>) which causes poor performance. But we notice that we can just keep one <code>sub</code> array, when new number <code>x</code> is not greater than the last element of the subsequence <code>sub</code>, we do binary search to find the smallest element &gt;&#x3D; <code>x</code> in <code>sub</code>, and replace with number <code>x</code>.</strong></p>
+</li>
+<li><p>Let’s run that example</p>
+<pre><code>nums = [2, 6, 8, 3, 4, 5, 1]
+</code></pre>
+<p>again:</p>
+<ol>
+<li>Let pick the first element, <code>sub = [2]</code>.</li>
+<li><code>6</code> is greater than previous number, <code>sub = [2, 6]</code></li>
+<li><code>8</code> is greater than previous number, <code>sub = [2, 6, 8]</code></li>
+<li><code>3</code> is less than previous number, so we can’t extend the subsequence <code>sub</code>. We need to find the smallest number &gt;&#x3D; <code>3</code> in <code>sub</code>, it’s <code>6</code>. Then we overwrite it, now <code>sub = [2, 3, 8]</code>.</li>
+<li><code>4</code> is less than previous number, so we can’t extend the subsequence <code>sub</code>. We overwrite <code>8</code> by <code>4</code>, so <code>sub = [2, 3, 4]</code>.</li>
+<li><code>5</code> is greater than previous number, <code>sub = [2, 3, 4, 5]</code>.</li>
+<li><code>1</code> is less than previous number, so we can’t extend the subsequence <code>sub</code>. We overwrite <code>2</code> by <code>1</code>, so <code>sub = [1, 3, 4, 5]</code>.</li>
+<li>Finally, length of longest increase subsequence &#x3D; <code>len(sub)</code> &#x3D; 4.</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://assets.leetcode.com/users/images/737a284c-b0f7-4dea-aa0f-068e768e65f5_1625856915.051443.jpeg" alt="image"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/300.%20Longest%20Increasing%20Subsequence/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/38.%20Count%20and%20Say/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="38-Count-and-Say"><a href="#38-Count-and-Say" class="headerlink" title="38. Count and Say"></a>38. Count and Say</h1><h2 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h2><p>在for循环中进行初始化和尾处理，反而可以使代码简化！！</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    string countAndSay(int n) &#123;
+        if(n == 1) return &quot;1&quot;;
+        string said = countAndSay(n - 1);
+        int count = 0, m = said.size();
+        string ans;
+        for(int i = 0; i &lt; m; i++)  &#123;
+           if(i &amp;&amp; said[i] != said[i - 1]) &#123;
+               ans += to_string(count) + to_string(said[i - 1] - &#39;0&#39;);
+               count = 1;
+           &#125; else &#123;
+               count++;
+           &#125;
+           if(i == m - 1) ans += to_string(count) + to_string(said[i] - &#39;0&#39;);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p><code>if(i &amp;&amp; ...)</code> 以及<code>if(i == m - 1)</code>，可以使代码变得更加简单，不用在循环外部进行特判！</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/38.%20Count%20and%20Say/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/16.%203Sum%20Closest/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="16-3Sum-Closest"><a href="#16-3Sum-Closest" class="headerlink" title="16. 3Sum Closest"></a>16. 3Sum Closest</h1><h2 id="核心思想：双指针"><a href="#核心思想：双指针" class="headerlink" title="核心思想：双指针"></a>核心思想：双指针</h2><p>双指针本质是二分查找的一种，一般用于查找两个数的和，对于有序数列，两个指针从两端出发，如果当前两个的和大于目标值，则右指针左移；小于则左指针右移</p>
+<p>代码：</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    int threeSumClosest(vector&lt;int&gt;&amp; nums, int target) &#123;
+        sort(nums.begin(), nums.end());
+        int ans = 1e5, n = nums.size();
+        for(int i = 0; i &lt; n; i++) &#123;
+            int left = i + 1, right = n - 1;
+            while(left &lt; right) &#123;
+                int sum = nums[i] + nums[left] + nums[right];
+                ans = (abs(sum - target) &lt; abs(ans - target) ? sum : ans);
+                if(sum &gt; target) right--;
+                else if (sum &lt; target) left++;
+                else goto ret;
+            &#125;
+        &#125;
+        ret:
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/16.%203Sum%20Closest/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/886.%20Possible%20Bipartition/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="886-Possible-Bipartition"><a href="#886-Possible-Bipartition" class="headerlink" title="886. Possible Bipartition"></a>886. Possible Bipartition</h1><h2 id="二分图问题："><a href="#二分图问题：" class="headerlink" title="二分图问题："></a>二分图问题：</h2><p>踩坑日志：</p>
+<ol>
+<li>将奇怪的dislikes格式转换成接邻矩阵</li>
+<li>二分图可能有多个不连通的图构成，因此是多源的，需要<code>for(int i = 1; i &lt;= n; i++)</code>遍历一遍node</li>
+</ol>
+<pre><code class="c++">class Solution &#123;
+public:
+    bool possibleBipartition(int n, vector&lt;vector&lt;int&gt;&gt;&amp; dislikes) &#123;
+        vector&lt;vector&lt;int&gt;&gt; edges(n + 1, vector&lt;int&gt;());
+        vector&lt;int&gt; label(n + 1, 0);
+        queue&lt;int&gt; buffer;
+        if(dislikes.empty()) return true;
+        for(auto p : dislikes) &#123;
+            if(p.empty()) continue;
+            edges[p[0]].push_back(p[1]);
+            edges[p[1]].push_back(p[0]);
+        &#125;
+
+        for(int i = 1; i &lt;= n; i++) &#123;
+            if(label[i] == 0) buffer.push(i);
+            else continue;
+
+            label[i] = 1;
+            while(!buffer.empty()) &#123;
+                auto p = buffer.front();
+                buffer.pop();
+                if(label[p] == 1) &#123;
+                    for(auto edge : edges[p]) &#123;
+                        if(label[edge] == 1) return false;
+                        else if(label[edge] == 0) &#123;
+                            label[edge] = 2;
+                            buffer.push(edge);
+                        &#125;
+                       
+                        
+                    &#125;
+                &#125; else if(label[p] == 2) &#123;
+                    for(auto edge : edges[p]) &#123;
+                        if(label[edge] == 2) return false;
+                        else if(label[edge] == 0) &#123;
+                            buffer.push(edge);
+                            label[edge] = 1;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/886.%20Possible%20Bipartition/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="19-Remove-Nth-Node-From-End-of-List"><a href="#19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="19. Remove Nth Node From End of List"></a>19. Remove Nth Node From End of List</h1><p><strong>经验教训：</strong></p>
+<p>链表操作最少需要两个指针！<code>prev</code>和<code>core</code>，其他的只可能比这个多，比如快慢指针需要三个！</p>
+<pre><code class="c++">/**
+ * Definition for singly-linked list.
+ * struct ListNode &#123;
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) &#123;&#125;
+ *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;
+ *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;
+ * &#125;;
+ */
+class Solution &#123;
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;
+        ListNode *guard = new ListNode(0, head);
+        ListNode *prev = guard, *cur = guard, *nxt = guard;
+        for(int i = 0; i &lt; n; i++) nxt = nxt-&gt;next;
+        while(nxt != nullptr) &#123;
+            nxt = nxt-&gt;next;
+            prev = cur;
+            cur = cur-&gt;next;
+        &#125;
+        prev-&gt;next = cur-&gt;next;
+        return guard-&gt;next;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/981.%20Time%20Based%20Key-Value%20Store/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="981-Time-Based-Key-Value-Store"><a href="#981-Time-Based-Key-Value-Store" class="headerlink" title="981. Time Based Key-Value Store"></a>981. Time Based Key-Value Store</h1><h2 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h2><ol>
+<li>双重map的插入方法: <code>m[key].insert(&#123;timestamp, value&#125;);</code>，采用<code>insert</code>方法直接插入pair类型</li>
+<li>dead_signal: 在查找时，需要判断第一层<code>map</code>的<code>key</code>是否存在</li>
+</ol>
+<pre><code class="c++">class TimeMap &#123;
+private:
+    unordered_map&lt;string, map&lt;int, string, less&lt;int&gt;&gt;&gt; m;
+public:
+    TimeMap() &#123;
+        
+    &#125;
+    
+    void set(string key, string value, int timestamp) &#123;
+        m[key].insert(&#123;timestamp, value&#125;);
+    &#125;
+    
+    string get(string key, int timestamp) &#123;
+        if(m.count(key) == 0) return &quot;&quot;;
+        auto p = m[key].upper_bound(timestamp);
+        p--;
+        if(p-&gt;first &lt;= timestamp) return p-&gt;second;
+        else return &quot;&quot;;
+    &#125;
+&#125;;
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap* obj = new TimeMap();
+ * obj-&gt;set(key,value,timestamp);
+ * string param_2 = obj-&gt;get(key,timestamp);
+ */
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/981.%20Time%20Based%20Key-Value%20Store/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="188-Best-Time-to-Buy-and-Sell-Stock-IV"><a href="#188-Best-Time-to-Buy-and-Sell-Stock-IV" class="headerlink" title="188. Best Time to Buy and Sell Stock IV"></a>188. Best Time to Buy and Sell Stock IV</h1><h2 id="O-n-2-times-k-的算法（最慢）"><a href="#O-n-2-times-k-的算法（最慢）" class="headerlink" title="$O(n^2\times k)$的算法（最慢）"></a>$O(n^2\times k)$的算法（最慢）</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;
+        if(k == 0 || prices.size() &lt;= 1) return 0;
+        int n = prices.size(), dp[k + 1][n];
+        memset(dp, 0, sizeof(dp));
+        
+        for(int l = 1; l &lt;= k; l++) &#123;
+            for(int i = 0; i &lt; n; i++) &#123;
+                dp[l][i] = dp[l][max(0, i - 1)];
+                for(int j = 0; j &lt; i; j++) &#123;
+                    dp[l][i] = max(dp[l][i], dp[l - 1][j] + prices[i] - prices[j]);
+                &#125;
+            &#125;
+        &#125;
+        return dp[k][n - 1];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>注意要点</strong>：</p>
+<pre><code> 1.  `dp[l][i]`不仅要和下标小于`i`的元素的`dp[l][j]`进行比较，还要考虑如果第`i`日不卖出，直接从`dp[l][i - 1]`转移，总的收入是否更高
+</code></pre>
+<h2 id="O-n-times-k-的算法"><a href="#O-n-times-k-的算法" class="headerlink" title="$O(n\times k)$的算法"></a>$O(n\times k)$的算法</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;
+        // no transaction, no profit
+        if (k == 0) return 0;
+        // dp[k][0] = min cost you need to spend at most k transactions
+        // dp[k][1] = max profit you can achieve at most k transactions
+        vector&lt;vector&lt;int&gt;&gt; dp(k + 1, vector&lt;int&gt;(2));
+        for (int i = 0; i &lt;= k; i++) dp[i][0] = INT_MAX;
+        for (auto&amp; price : prices) &#123;
+            for (int i = 1; i &lt;= k; i++) &#123;
+                // price - dp[i - 1][1] is how much you need to spend
+                // i.e use the profit you earned from previous transaction to buy the stock
+                // we want to minimize it
+                dp[i][0] = min(dp[i][0], price - dp[i - 1][1]);
+                // price - dp[i][0] is how much you can achieve from previous min cost
+                // we want to maximize it
+                dp[i][1] = max(dp[i][1], price - dp[i][0]);
+            &#125;
+        &#125;
+        // return max profit at most k transactions
+        // or you can use `return dp.back()[1];`
+        return dp[k][1];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>note:</strong></p>
+<p><a target="_blank" rel="noopener" href="https://wingkwong.github.io/leetcode-the-hard-way/solutions/0100-0199/best-time-to-buy-and-sell-stock-iv-hard">0188 - Best Time to Buy and Sell Stock IV (Hard) | LeetCode The Hard Way (wingkwong.github.io)</a></p>
+<ol>
+<li><code>dp[i][0] = min(dp[i][0], price - dp[i - 1][1]);</code>比较的是“是否购入第<code>price</code>所在天的股票所需要的花费哪个更小”，前者<code>dp[i][0]</code>指不购入当前天的股票，花费与前一天相同。注意，此时<code>dp[i - 1][1]</code>所指的为“当前天卖了<code>i - 1</code>次股票所能带来的利润”，而非前一天的（由从0到k遍历这个性质决定）</li>
+<li>花费指代总花费，利润指代总利润</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/2426.%20Number%20of%20Pairs%20Satisfying%20Inequality/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2426-Number-of-Pairs-Satisfying-Inequality"><a href="#2426-Number-of-Pairs-Satisfying-Inequality" class="headerlink" title="2426. Number of Pairs Satisfying Inequality"></a>2426. Number of Pairs Satisfying Inequality</h1><h2 id="pb-ds的使用"><a href="#pb-ds的使用" class="headerlink" title="pb_ds的使用"></a>pb_ds的使用</h2><p>支持Hash_table, Tree, Trie等数据结构，并且相对于STL还有一些扩展</p>
+<p>声明库：</p>
+<pre><code class="c++">#include&lt;ext/pb_ds/assoc_container.hpp&gt;
+#include&lt;ext/pb_ds/tree_policy.hpp&gt;//用tree
+#include&lt;ext/pb_ds/hash_policy.hpp&gt;//用hash
+#include&lt;ext/pb_ds/trie_policy.hpp&gt;//用trie
+#include&lt;ext/pb_ds/priority_queue.hpp&gt;//用priority_queue
+using namespace __gnu_pbds;
+</code></pre>
+<p>Tree的声明：</p>
+<pre><code class="c++">template&lt;class T&gt; using ordered_set = tree&lt;T, nulltype, less&lt;T&gt;, rb_tree_tag, tree_order_statistics_node_update&gt;;
+</code></pre>
+<p>Trie的声明：</p>
+<pre><code class="c++">template&lt;class T&gt; using Trie = trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt;
+</code></pre>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code class="c++">#include&lt;ext/pb_ds/assoc_container.hpp&gt;
+#include&lt;ext/pb_ds/tree_policy.hpp&gt;
+
+using namespace __gnu_pbds;
+
+template&lt;class T&gt; using ordered_set = tree&lt;T,null_type,less_equal&lt;T&gt;,rb_tree_tag,tree_order_statistics_node_update&gt;;
+
+typedef long long ll;
+
+class Solution &#123;
+public:
+    long long numberOfPairs(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b, int diff) &#123;
+        int n = a.size();
+
+        ll ans = 0;
+        ordered_set&lt;int&gt; os;
+        
+        for(int i=0; i&lt;n; i++) &#123;
+            ans += os.order_of_key(a[i]-b[i]+diff+1);
+            os.insert(a[i]-b[i]);
+        &#125;
+        
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2426.%20Number%20of%20Pairs%20Satisfying%20Inequality/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h1><p>递推公式：</p>
+<p>$dp[i] &#x3D; (dp[i - 1] + m) % n$</p>
+<p>解释：</p>
+<p>当前约瑟夫环中，最后剩下的人的编号，在上一个约瑟夫环中是多少</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/20/%E5%89%B2%E7%BB%B3%E5%AD%90%E9%97%AE%E9%A2%98/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="割绳子问题"><a href="#割绳子问题" class="headerlink" title="割绳子问题"></a>割绳子问题</h1><h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>总共有n条长度不等绳子，可以任意切割，不能拼接。要求切割后得到m条长度相等的绳子，求问得到的m条绳子长度L的最大值</p>
+<p><strong>输入</strong> ： 绳子条数n；表示绳子长度的n维数组l，要求输出的绳子长度m</p>
+<p><strong>输出</strong>： 长度最大值L</p>
+<p><strong>思路：</strong></p>
+<p>先考虑一种简化的情形，假设每一根绳子只能使用一次（即使绳子很长，可以切割出多条长度为L的小段，也只使用其中一段），那么这个问题就退化为一个简单的排序问题，直接找出其中第m长的绳子，其长度就是L的最大值。这种情形很简单。</p>
+<p>再考虑一种稍微复杂一些的情形：假设每一根绳子最多只能使用两次，那么可以对l[0], l[1], …, l[n-1], l[0]&#x2F;2, l[1]&#x2F;2, …, l[n-1]&#x2F;2 这2n个数排序，取其中第m大的数，其值就是L的最大值。</p>
+<p>举个栗子，假设有n&#x3D;4根绳，长度为a&gt;b&gt;c&gt;d，又有b&gt;a&#x2F;2&gt;c，要取出m&#x3D;3条长度相等的绳。则对4*2&#x3D;8个数排序后前三位是a,b,a&#x2F;2. 那么长度L的最大值就是a&#x2F;2；前三位中最长的绳出现了两次（a，a&#x2F;2），第二长的绳出现了一次，而切割出的3个片段中最长的绳可以切出两个，第二次的绳可以切出一个，也就是说，每一根绳分出的片段数和它在排序后的数组的前m位中出现的次数是对应的。</p>
+<p>如果把上面的条件改为a&#x2F;2&gt;b，则L的最大值就是b，同样是a分出两段，b分出一段。条件改为a&#x2F;2&lt;c，则L最大值为c，三根绳a, b, c各分出一段。</p>
+<p>回到原来的问题，因为不限制每根绳的使用次数，所以一根绳最多使用m次（极端情况a&#x2F;m&gt;b），因此对l[0], l[1], …, l[n], l[0]&#x2F;2, l[1]&#x2F;2, …, l[n]&#x2F;2, l[0]&#x2F;3, …, l[n-1]&#x2F;m共m*n个数排序，再取其第m大的元素既是L的最大值。这种情况下，“每一根绳分出的片段数和它在排序后的数组的前m位中出现的次数相等”这一条件依然能得到满足。</p>
+<p>代码实现：</p>
+<pre><code class="c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+
+
+const int N = 0xffff;
+int arr[N], m, n;
+
+
+int max_len() &#123;
+   priority_queue&lt;int&gt; len;
+   for(int i = 0; i &lt; n; i++) &#123;
+      for(int j = 1; j &lt;= m; j++) &#123;
+         len.push(arr[i] / j);
+      &#125;
+   &#125;
+   int ans = 0;
+   for(int i = 0; i &lt; m; i++) &#123;
+      ans = len.top();
+      len.pop();
+   &#125;
+   return ans;
+&#125;
+
+
+int main() &#123;
+   cin &gt;&gt; n &gt;&gt; m;
+   for(int i = 0; i &lt; n; i++) &#123;
+      scanf(&quot;%d&quot;, &amp;arr[i]);
+   &#125;
+   cout &lt;&lt; max_len() &lt;&lt; endl;
+   return 0;
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/%E5%89%B2%E7%BB%B3%E5%AD%90%E9%97%AE%E9%A2%98/" class="go-post">阅读全文</a>
+</div>
+
+
+            <div class="page-current">
+    <div class="prev">
+        
+        <a class="page-num" href="/page/2/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            
+                
+                <a class="page-num" href="/">1</a>
+                
+                
+            
+            <a class="page-num" href="/page/2/">2</a>
+        </span>
+        
+        <span class="current">3</span>
+        
+        <span>
+            <a class="page-num" href="/page/4/">4</a>
+            
+            <a class="page-num" href="/page/5">5</a>
+            
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a class="page-num" href="/page/4/">
+            <i class="fa-solid fa-caret-right fa-fw"></i>
+        </a>
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" alt="avatar" />
+        </div>
+        <div class="name">Junran Yang(杨竣然)</div>
+        <div class="description">
+            <p>Grad student in Northwestern University</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a href="/">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog of Junran Yang</title>
+        <meta name="author" content="Junran Yang(杨竣然)" />
+        <meta name="description" content="a blog to record daily life" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>BLOG OF JUNRAN YANG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG OF JUNRAN YANG</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="188-Best-Time-to-Buy-and-Sell-Stock-IV"><a href="#188-Best-Time-to-Buy-and-Sell-Stock-IV" class="headerlink" title="188. Best Time to Buy and Sell Stock IV"></a>188. Best Time to Buy and Sell Stock IV</h1><h2 id="O-n-2-times-k-的算法（最慢）"><a href="#O-n-2-times-k-的算法（最慢）" class="headerlink" title="$O(n^2\times k)$的算法（最慢）"></a>$O(n^2\times k)$的算法（最慢）</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;
+        if(k == 0 || prices.size() &lt;= 1) return 0;
+        int n = prices.size(), dp[k + 1][n];
+        memset(dp, 0, sizeof(dp));
+        
+        for(int l = 1; l &lt;= k; l++) &#123;
+            for(int i = 0; i &lt; n; i++) &#123;
+                dp[l][i] = dp[l][max(0, i - 1)];
+                for(int j = 0; j &lt; i; j++) &#123;
+                    dp[l][i] = max(dp[l][i], dp[l - 1][j] + prices[i] - prices[j]);
+                &#125;
+            &#125;
+        &#125;
+        return dp[k][n - 1];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>注意要点</strong>：</p>
+<pre><code> 1.  `dp[l][i]`不仅要和下标小于`i`的元素的`dp[l][j]`进行比较，还要考虑如果第`i`日不卖出，直接从`dp[l][i - 1]`转移，总的收入是否更高
+</code></pre>
+<h2 id="O-n-times-k-的算法"><a href="#O-n-times-k-的算法" class="headerlink" title="$O(n\times k)$的算法"></a>$O(n\times k)$的算法</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;
+        // no transaction, no profit
+        if (k == 0) return 0;
+        // dp[k][0] = min cost you need to spend at most k transactions
+        // dp[k][1] = max profit you can achieve at most k transactions
+        vector&lt;vector&lt;int&gt;&gt; dp(k + 1, vector&lt;int&gt;(2));
+        for (int i = 0; i &lt;= k; i++) dp[i][0] = INT_MAX;
+        for (auto&amp; price : prices) &#123;
+            for (int i = 1; i &lt;= k; i++) &#123;
+                // price - dp[i - 1][1] is how much you need to spend
+                // i.e use the profit you earned from previous transaction to buy the stock
+                // we want to minimize it
+                dp[i][0] = min(dp[i][0], price - dp[i - 1][1]);
+                // price - dp[i][0] is how much you can achieve from previous min cost
+                // we want to maximize it
+                dp[i][1] = max(dp[i][1], price - dp[i][0]);
+            &#125;
+        &#125;
+        // return max profit at most k transactions
+        // or you can use `return dp.back()[1];`
+        return dp[k][1];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>note:</strong></p>
+<p><a target="_blank" rel="noopener" href="https://wingkwong.github.io/leetcode-the-hard-way/solutions/0100-0199/best-time-to-buy-and-sell-stock-iv-hard">0188 - Best Time to Buy and Sell Stock IV (Hard) | LeetCode The Hard Way (wingkwong.github.io)</a></p>
+<ol>
+<li><code>dp[i][0] = min(dp[i][0], price - dp[i - 1][1]);</code>比较的是“是否购入第<code>price</code>所在天的股票所需要的花费哪个更小”，前者<code>dp[i][0]</code>指不购入当前天的股票，花费与前一天相同。注意，此时<code>dp[i - 1][1]</code>所指的为“当前天卖了<code>i - 1</code>次股票所能带来的利润”，而非前一天的（由从0到k遍历这个性质决定）</li>
+<li>花费指代总花费，利润指代总利润</li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog of Junran Yang
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Junran Yang(杨竣然)
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>
