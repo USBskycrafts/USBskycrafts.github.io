@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>2492. Minimum Score of a Path Between Two Cities | Blog of Junran Yang</title>
+        <title>CV | Blog of Junran Yang</title>
         <meta name="author" content="Junran Yang(杨竣然)" />
         <meta name="description" content="a blog to record daily life" />
         <meta name="keywords" content="" />
@@ -145,7 +145,7 @@
 
                 <div class="article">
     <div>
-        <h1>2492. Minimum Score of a Path Between Two Cities</h1>
+        <h1>CV</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -163,7 +163,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/leetcode-algorithm/" style="color: #00a596">leetcode algorithm</a>
+                <a href="/tags/CV/" style="color: #00a596">CV</a>
             </span>
             
         </span>
@@ -171,83 +171,7 @@
     </div>
     
     <div class="content" v-pre>
-        <p>my implementation: (very slow)</p>
-<pre><code class="C++">  class Solution &#123;
-  public:
-    int minScore(int n, vector&lt;vector&lt;int&gt;&gt;&amp; roads) &#123;
-        vector&lt;bool&gt; vis(n, false);
-        unordered_map&lt;int, unordered_map&lt;int, int&gt;&gt; dis;
-        for(int i = 0; i &lt; roads.size(); i++) &#123;
-            dis[roads[i][0]][roads[i][1]] = roads[i][2];
-            dis[roads[i][1]][roads[i][0]] = roads[i][2];
-        &#125;
-        unordered_set&lt;int&gt; adj;
-        queue&lt;int&gt; list;
-        list.push(1);
-        while(!list.empty()) &#123;
-            auto i = list.front();
-            vis[i] = true;
-            list.pop();
-            auto&amp; roads = dis[i];
-            for(auto&amp; [j, cost] : roads) &#123;
-                if(!vis[j]) &#123;
-                    //cout &lt;&lt; cost &lt;&lt; &quot;\n&quot;;
-                    adj.insert(cost);
-                    list.push(j);
-                &#125;
-            &#125;
-        &#125;
-        int ans = INT_MAX;
-        for(auto c : adj) &#123;
-            ans = min(ans, c);
-        &#125;
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-<p>but there is another union-find implementation, which might be the fastest version</p>
-<pre><code class="C++">class Solution &#123;
-  public:
-    vector&lt;int&gt; group;
-    int look(int a)&#123;
-        return (a==group[a])? a:look(group[a]);
-    &#125;
-    int minScore(int n, vector&lt;vector&lt;int&gt;&gt;&amp; roads) &#123;
-        ios_base::sync_with_stdio(false);
-        group.resize(n+1);
-        vector&lt;int&gt; dis(n+1, INT_MAX);
-        int i, l1, l2;
-        for(i=1; i &lt; n+1; i++) &#123;
-          group[i]=i;
-        &#125;
-        for(i = 0; i &lt; roads.size(); i++)&#123;
-            l1=look(roads[i][0]);
-            l2=look(roads[i][1]);
-            if(l1&gt;l2) &#123;
-              swap(l1, l2);
-            &#125;
-            group[l2]=l1;
-            group[l1]=l1;
-            dis[l1]= min(dis[l1], min(dis[l2], roads[i][2]));
-        &#125;
-        return dis[look(n)];
-    &#125;
-&#125;;
-</code></pre>
-<p>in which <code>dis[*]</code> is the cost of current union-find set, the element of set is the node of graph. compared to the first wrong version of my code:</p>
-<pre><code class="C++">  class Solution &#123;
-  public:
-      int minScore(int n, vector&lt;vector&lt;int&gt;&gt;&amp; roads) &#123;
-          int score = INT_MAX;
-          for(auto road : roads) &#123;
-              score = min(score, road[2]);
-          &#125;
-          return score;
-      &#125;
-  &#125;;
-</code></pre>
-<p>if the lowest cost edge does not connect to the path from 1 to n, there will be an error</p>
-
+        
     </div>
     
     

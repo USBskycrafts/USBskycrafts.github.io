@@ -165,6 +165,82 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/Leetcode%20%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Leetcode-刷题笔记"><a href="#Leetcode-刷题笔记" class="headerlink" title="Leetcode 刷题笔记"></a>Leetcode 刷题笔记</h1><h2 id="114-Flatten-Binary-Tree-to-Linked-List"><a href="#114-Flatten-Binary-Tree-to-Linked-List" class="headerlink" title="114. Flatten Binary Tree to Linked List"></a>114. Flatten Binary Tree to Linked List</h2><p>Given the <code>root</code> of a binary tree, flatten the tree into a “linked list”:</p>
+<ul>
+<li>The “linked list” should use the same <code>TreeNode</code> class where the <code>right</code> child pointer points to the next node in the list and the <code>left</code> child pointer is always <code>null</code>.</li>
+<li>The “linked list” should be in the same order as a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Tree_traversal#Pre-order,_NLR"><strong>pre-order</strong> <strong>traversal</strong></a> of the binary tree.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/01/14/flaten.jpg" alt="img"></p>
+<pre><code>Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+</code></pre>
+<p>Code:</p>
+<pre><code class="c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode &#123;
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
+ * &#125;;
+ */
+class Solution &#123;
+private:
+    TreeNode* dfs(TreeNode* root) &#123;
+        if(!root-&gt;left &amp;&amp; !root-&gt;right) return root;
+        TreeNode *tail, *next = root-&gt;right;
+        
+        if(root-&gt;left != nullptr) &#123;
+            tail = dfs(root-&gt;left);
+            root-&gt;right = root-&gt;left;
+            root-&gt;left = nullptr;
+            tail-&gt;right = next;
+        &#125;
+        if(root-&gt;right != nullptr) tail = dfs(root-&gt;right);
+        return tail;
+    &#125;
+public:
+    void flatten(TreeNode* root) &#123;
+        if(root == nullptr) return;
+        dfs(root);
+        return;
+    &#125;
+&#125;;
+</code></pre>
+<p>Solution:</p>
+<p>Flatten the left subtree, then insert it between the root and the right child, finally go to the right tree and repeat the process before.</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/Leetcode%20%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations/">
         <h2 class="post-title"></h2>
     </a>
@@ -349,7 +425,7 @@ public:
         
         <span class="tag">
             
-            <a href="/tags/algorithm/" style="color: #03a9f4">
+            <a href="/tags/algorithm/" style="color: #ff7d73">
                 algorithm
             </a>
         </span>

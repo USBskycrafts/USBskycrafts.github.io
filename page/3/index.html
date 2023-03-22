@@ -165,6 +165,62 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/732.%20My%20Calendar%20III/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="732-My-Calendar-III"><a href="#732-My-Calendar-III" class="headerlink" title="732. My Calendar III"></a>732. My Calendar III</h1><h2 id="核心思想：扫描线段"><a href="#核心思想：扫描线段" class="headerlink" title="核心思想：扫描线段"></a>核心思想：扫描线段</h2><p>用一个<code>map</code>记录多个线段的起点和终点，起点++，终点–，最后从小到大扫描<code>map</code>，记录最大的重叠部分</p>
+<pre><code class="c++">class MyCalendarThree &#123;
+private:
+    map&lt;int, int&gt; m;
+public:
+    MyCalendarThree() &#123;
+        
+    &#125;
+    
+    int book(int start, int end) &#123;
+        m[start]++;
+        m[end]--;
+        int ans = 0, lad = 0;
+        for(auto &amp;[_, num] : m) &#123;
+            lad += num;
+            ans = max(ans, lad);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+
+/**
+ * Your MyCalendarThree object will be instantiated and called as such:
+ * MyCalendarThree* obj = new MyCalendarThree();
+ * int param_1 = obj-&gt;book(start,end);
+ */
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/732.%20My%20Calendar%20III/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/218.%20The%20Skyline%20Problem/">
         <h2 class="post-title"></h2>
     </a>
@@ -751,39 +807,6 @@ public:
         
     </div>
     <a href="/2023/03/20/2426.%20Number%20of%20Pairs%20Satisfying%20Inequality/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h1><p>递推公式：</p>
-<p>$dp[i] &#x3D; (dp[i - 1] + m) % n$</p>
-<p>解释：</p>
-<p>当前约瑟夫环中，最后剩下的人的编号，在上一个约瑟夫环中是多少</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" class="go-post">阅读全文</a>
 </div>
 
 
