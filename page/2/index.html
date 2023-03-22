@@ -158,6 +158,59 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/767.%20Reorganize%20String/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="767-Reorganize-String"><a href="#767-Reorganize-String" class="headerlink" title="767. Reorganize String"></a>767. Reorganize String</h1><p><strong>思路：</strong></p>
+<p>取堆上数量最多的两个字母，然后<strong>交错</strong>排序。因为是交错排序，因此，要分别用<code>cur</code>，<code>prev</code>的结构</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    string reorganizeString(string s) &#123;
+        unordered_map&lt;char, int&gt; m;
+        for(char c : s) m[c]++;
+        priority_queue&lt;pair&lt;int, char&gt;&gt; h;
+        for(auto p : m) h.push(&#123;p.second, p.first&#125;);
+        pair&lt;int, char&gt; prev = &#123;0, &#39;#&#39;&#125;, cur;
+        string ans;
+        while(h.size()) &#123;
+            cur = h.top();
+            h.pop();
+            ans += cur.second;
+            cur.first--;
+            if(prev.first &gt; 0) h.push(prev);
+            prev = cur;
+        &#125;
+        cout &lt;&lt; ans &lt;&lt; endl;
+        return ans.size() == s.size() ? ans : &quot;&quot;;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/767.%20Reorganize%20String/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/729.%20My%20Calendar%20I/">
         <h2 class="post-title"></h2>
     </a>
@@ -722,71 +775,6 @@ public:
         
     </div>
     <a href="/2023/03/20/732.%20My%20Calendar%20III/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/218.%20The%20Skyline%20Problem/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="218-The-Skyline-Problem"><a href="#218-The-Skyline-Problem" class="headerlink" title="218. The Skyline Problem"></a>218. The Skyline Problem</h1><p><strong>踩坑记录</strong></p>
-<ol>
-<li>要处理单横坐标点上存在多个建筑的情况</li>
-<li>用于存储的二维数组，横坐标要从小到大排序，而高度要从大到小排序才能保证天际线不会因为单坐标点上出现多个建筑导致结果“冗余”</li>
-<li>由于单坐标点存在多个建筑，因此不能再维护一个单调数组（’c++中可用<code>set</code>实现）了，而是应该使用map来记录每个横坐标点上的建筑数量</li>
-</ol>
-<p>代码：</p>
-<pre><code class="c++">class Solution &#123;
-public:
-    vector&lt;vector&lt;int&gt;&gt; getSkyline(vector&lt;vector&lt;int&gt;&gt;&amp; buildings) &#123;
-        vector&lt;pair&lt;int, int&gt;&gt; key_points;
-        
-        for(auto building : buildings) &#123;
-            int left = building[0], right = building[1], height = building[2];
-            key_points.push_back(&#123;left, height&#125;);
-            key_points.push_back(&#123;right, -height&#125;);
-        &#125;
-        sort(key_points.begin(), key_points.end(), [](auto a, auto b) &#123;
-            if(a.first == b.first) return a.second &gt; b.second;
-            else return a.first &lt; b.first;
-        &#125;);
-        map&lt;int, int, greater&lt;int&gt;&gt; points;
-        vector&lt;vector&lt;int&gt;&gt; ans;
-        int max_height = 0;
-        for(auto &amp;[index, height] : key_points) &#123;
-            if(height &gt; 0) points[height]++;
-            else points[-height]--;
-            if(points[abs(height)] == 0) points.erase(abs(height));
-            int top = points.begin()-&gt;first;
-            if(top != max_height)ans.push_back(&#123;index, top&#125;);
-            max_height = top;
-        &#125;
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/218.%20The%20Skyline%20Problem/" class="go-post">阅读全文</a>
 </div>
 
 

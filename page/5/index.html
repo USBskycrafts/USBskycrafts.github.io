@@ -158,6 +158,55 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1770-Maximum-Score-from-Performing-Multiplication-Operations"><a href="#1770-Maximum-Score-from-Performing-Multiplication-Operations" class="headerlink" title="1770. Maximum Score from Performing Multiplication Operations"></a>1770. Maximum Score from Performing Multiplication Operations</h1><p><img src="https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/Documents/1770/1770_Recursion_Tree.svg" alt="Overlapping"></p>
+<h2 id="状态转移方程推导："><a href="#状态转移方程推导：" class="headerlink" title="状态转移方程推导："></a>状态转移方程推导：</h2><p><strong>VERY IMPORTANT! 由于是搜索树，越往下，问题规模越小，下方是上方的子问题，因此要从叶子节点开始构建！</strong><br>$$<br>right &#x3D; n - 1 - (i - left) \<br>dp[i][left]&#x3D;\max(dp[i+1][left]+mul[i]*nums[left], dp[i+1][left] + mul[i]*nums[right])<br>$$<br>其中，$left$和$right$分别为区间左右侧的下标，$i$为操作次数</p>
+<h2 id="代码-O-m-2"><a href="#代码-O-m-2" class="headerlink" title="代码($O(m^2)$)"></a>代码($O(m^2)$)</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maximumScore(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; mul) &#123;
+        int n = nums.size(), m = mul.size();
+        vector&lt;int&gt; dp(m + 1, 0);
+        
+        for(int i = m - 1; i &gt;= 0; i--) &#123;
+            for(int left = 0; left &lt;= i; left++) &#123;
+                int right = n - 1 - (i - left);
+                dp[left] = max(dp[left + 1] + mul[i] * nums[left],
+                              dp[left] + mul[i] * nums[right]);
+            &#125;
+        &#125;
+        return dp[0];
+    &#125;
+&#125;;
+</code></pre>
+<p>内存进行了优化</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1770.%20Maximum%20Score%20from%20Performing%20Multiplication%20Operations/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/">
         <h2 class="post-title"></h2>
     </a>
@@ -238,47 +287,48 @@ public:
 <p>滑动的阈值（time）</p>
 <p>踩坑点：</p>
 <ol>
-<li>小顶堆的排序方法必须要使用<code>&gt;</code>，与正常相反<pre><code>class Solution {
+<li>小顶堆的排序方法必须要使用<code>&gt;</code>，与正常相反</li>
+</ol>
+<pre><code class="C++">class Solution &#123;
 private:
-    struct cmp {
-        bool operator()(vector&lt;int&gt; const&amp; a, vector&lt;int&gt; const&amp; b) {
-            if(a[1] !&#x3D; b[1]) return a[1] &gt; b[1];
+    struct cmp &#123;
+        bool operator()(vector&lt;int&gt; const&amp; a, vector&lt;int&gt; const&amp; b) &#123;
+            if(a[1] != b[1]) return a[1] &gt; b[1];
             else return a[2] &gt; b[2];
-        }
-    };
+        &#125;
+    &#125;;
 public:
-    vector&lt;int&gt; getOrder(vector&lt;vector&lt;int&gt;&gt;&amp; tasks) {
-        int n &#x3D; tasks.size();
-        for(int i &#x3D; 0; i &lt; n; i++) {
+    vector&lt;int&gt; getOrder(vector&lt;vector&lt;int&gt;&gt;&amp; tasks) &#123;
+        int n = tasks.size();
+        for(int i = 0; i &lt; n; i++) &#123;
             tasks[i].push_back(i);
-        }
+        &#125;
 
         sort(tasks.begin(), tasks.end());
         
         priority_queue&lt;vector&lt;int&gt;, vector&lt;vector&lt;int&gt;&gt;, cmp&gt; q;
         vector&lt;int&gt; ans;
 
-        long time &#x3D; tasks[0][0], i &#x3D; 1;
+        long time = tasks[0][0], i = 1;
         q.push(tasks[0]);
 
-        while(!q.empty()) {
+        while(!q.empty()) &#123;
             
-            auto p &#x3D; q.top();
+            auto p = q.top();
             q.pop();
-            time &#x3D; max(time + p[1], (long)(p[0] + p[1]));
+            time = max(time + p[1], (long)(p[0] + p[1]));
             ans.push_back(p[2]);
 
-            while(i &lt; n &amp;&amp; (q.empty() || time &gt;&#x3D; tasks[i][0])) {
+            while(i &lt; n &amp;&amp; (q.empty() || time &gt;= tasks[i][0])) &#123;
                 q.push(tasks[i++]);
-            }
-        }
+            &#125;
+        &#125;
 
         return ans;
 
-    }
-};
-</code></pre></li>
-</ol>
+    &#125;
+&#125;;
+</code></pre>
 
             
         </div>
@@ -292,7 +342,7 @@ public:
         
         <span class="tag">
             
-            <a href="/tags/algorithm/" style="color: #00bcd4">
+            <a href="/tags/algorithm/" style="color: #ffa2c4">
                 algorithm
             </a>
         </span>

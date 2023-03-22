@@ -156,7 +156,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/algorithm/" style="color: #00bcd4">algorithm</a>
+                <a href="/tags/algorithm/" style="color: #03a9f4">algorithm</a>
             </span>
             
         </span>
@@ -168,47 +168,48 @@
 <p>滑动的阈值（time）</p>
 <p>踩坑点：</p>
 <ol>
-<li>小顶堆的排序方法必须要使用<code>&gt;</code>，与正常相反<pre><code>class Solution {
+<li>小顶堆的排序方法必须要使用<code>&gt;</code>，与正常相反</li>
+</ol>
+<pre><code class="C++">class Solution &#123;
 private:
-    struct cmp {
-        bool operator()(vector&lt;int&gt; const&amp; a, vector&lt;int&gt; const&amp; b) {
-            if(a[1] !&#x3D; b[1]) return a[1] &gt; b[1];
+    struct cmp &#123;
+        bool operator()(vector&lt;int&gt; const&amp; a, vector&lt;int&gt; const&amp; b) &#123;
+            if(a[1] != b[1]) return a[1] &gt; b[1];
             else return a[2] &gt; b[2];
-        }
-    };
+        &#125;
+    &#125;;
 public:
-    vector&lt;int&gt; getOrder(vector&lt;vector&lt;int&gt;&gt;&amp; tasks) {
-        int n &#x3D; tasks.size();
-        for(int i &#x3D; 0; i &lt; n; i++) {
+    vector&lt;int&gt; getOrder(vector&lt;vector&lt;int&gt;&gt;&amp; tasks) &#123;
+        int n = tasks.size();
+        for(int i = 0; i &lt; n; i++) &#123;
             tasks[i].push_back(i);
-        }
+        &#125;
 
         sort(tasks.begin(), tasks.end());
         
         priority_queue&lt;vector&lt;int&gt;, vector&lt;vector&lt;int&gt;&gt;, cmp&gt; q;
         vector&lt;int&gt; ans;
 
-        long time &#x3D; tasks[0][0], i &#x3D; 1;
+        long time = tasks[0][0], i = 1;
         q.push(tasks[0]);
 
-        while(!q.empty()) {
+        while(!q.empty()) &#123;
             
-            auto p &#x3D; q.top();
+            auto p = q.top();
             q.pop();
-            time &#x3D; max(time + p[1], (long)(p[0] + p[1]));
+            time = max(time + p[1], (long)(p[0] + p[1]));
             ans.push_back(p[2]);
 
-            while(i &lt; n &amp;&amp; (q.empty() || time &gt;&#x3D; tasks[i][0])) {
+            while(i &lt; n &amp;&amp; (q.empty() || time &gt;= tasks[i][0])) &#123;
                 q.push(tasks[i++]);
-            }
-        }
+            &#125;
+        &#125;
 
         return ans;
 
-    }
-};
-</code></pre></li>
-</ol>
+    &#125;
+&#125;;
+</code></pre>
 
     </div>
     
