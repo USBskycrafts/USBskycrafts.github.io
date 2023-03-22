@@ -1,9 +1,12 @@
 mixins.highlight = {
     data() {
-        return { copying: false, renderers: [this.highlight] };
+        return {
+            copying: false,
+        };
     },
     created() {
         hljs.configure({ ignoreUnescapedHTML: true });
+        this.renderers.push(this.highlight);
     },
     methods: {
         highlight() {

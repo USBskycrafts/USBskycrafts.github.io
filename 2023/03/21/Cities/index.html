@@ -8,14 +8,21 @@
         <meta name="description" content="a blog to record daily life" />
         <meta name="keywords" content="" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="https://www.gravatar.com/avatar/14df91dc80251a6e5350d02b2ca05468?s=200" />
-        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+        <link rel="icon" href="/null" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
@@ -198,7 +205,7 @@
     &#125;
 &#125;;
 </code></pre>
-<p>but there is another union-find implementation, which might be the <br>fastest version</p>
+<p>but there is another union-find implementation, which might be the fastest version</p>
 <pre><code class="C++">class Solution &#123;
   public:
     vector&lt;int&gt; group;
@@ -210,21 +217,25 @@
         group.resize(n+1);
         vector&lt;int&gt; dis(n+1, INT_MAX);
         int i, l1, l2;
-        for(i=1; i&lt;n+1; i++)    group[i]=i;
-        for(i=0; i&lt;roads.size(); i++)&#123;
+        for(i=1; i &lt; n+1; i++) &#123;
+          group[i]=i;
+        &#125;
+        for(i = 0; i &lt; roads.size(); i++)&#123;
             l1=look(roads[i][0]);
             l2=look(roads[i][1]);
-            if(l1&gt;l2)   swap(l1, l2);
+            if(l1&gt;l2) &#123;
+              swap(l1, l2);
+            &#125;
             group[l2]=l1;
             group[l1]=l1;
-            dis[l1]=(dis[l1]&lt;dis[l2]&amp;&amp;dis[l1]&lt;roads[i][2])?dis[l1]:(dis[l2]&lt;roads[i][2])?dis[l2]:roads[i][2];
+            dis[l1]= min(dis[l1], min(dis[l2], roads[i][2]));
         &#125;
         return dis[look(n)];
     &#125;
 &#125;;
 </code></pre>
-<p><code>dis[*]</code> is the cost of current union-find set, the element of set is the node of graph. compared to the first wrong version of my code:</p>
-<pre><code class="c++">  class Solution &#123;
+<p>in which <code>dis[*]</code> is the cost of current union-find set, the element of set is the node of graph. compared to the first wrong version of my code:</p>
+<pre><code class="C++">  class Solution &#123;
   public:
       int minScore(int n, vector&lt;vector&lt;int&gt;&gt;&amp; roads) &#123;
           int score = INT_MAX;

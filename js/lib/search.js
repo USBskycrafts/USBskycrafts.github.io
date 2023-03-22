@@ -1,6 +1,8 @@
 mixins.search = {
     data() {
-        return { rawSearch: "" };
+        return {
+            rawSearch: "",
+        };
     },
     watch: {
         search(value) {
@@ -19,7 +21,7 @@ mixins.search = {
     },
     computed: {
         search() {
-            return this.rawSearch.toLowerCase().replace(/s+/gm, "");
+            return this.rawSearch.toLowerCase().replace(/\s+/g, "");
         },
     },
 };
