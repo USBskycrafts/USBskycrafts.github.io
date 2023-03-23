@@ -165,6 +165,69 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/290.%20Word%20Pattern/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="290-Word-Pattern"><a href="#290-Word-Pattern" class="headerlink" title="290. Word Pattern"></a>290. Word Pattern</h1><h1 id="踩坑点："><a href="#踩坑点：" class="headerlink" title="踩坑点："></a>踩坑点：</h1><ol>
+<li>c++ 下如何split：</li>
+</ol>
+<p>​	对于<code> &quot; &quot;</code>来说，可以使用sstream来进行分割</p>
+<pre><code class="c++">stringstream ss(s);
+istream_iterator&lt;string&gt; begin(ss), end;
+vector&lt;string&gt; s_arr(begin, end);
+</code></pre>
+<ol start="2">
+<li>相互映射，不止<code>string-&gt;char</code>，还得<code>char-&gt;string</code></li>
+</ol>
+<p>源代码：</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    bool wordPattern(string pattern, string s) &#123;
+        stringstream ss(s);
+        istream_iterator&lt;string&gt; begin(ss), end;
+        vector&lt;string&gt; s_arr(begin, end);
+        if(pattern.size() != s_arr.size()) return false;
+        int n = pattern.size();
+        unordered_map&lt;char, string&gt; m;
+        unordered_map&lt;string, char&gt; h;
+        for(int i = 0; i &lt; n; i++) &#123;
+            if(m.count(pattern[i]) == 0 &amp;&amp; h.count(s_arr[i]) == 0) &#123;
+                m[pattern[i]] = s_arr[i];
+                h[s_arr[i]] = pattern[i];
+            &#125; else if(m[pattern[i]] != s_arr[i] || h[s_arr[i]] != pattern[i]) &#123;
+                return false;
+            &#125;
+        &#125;
+        return  true;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/290.%20Word%20Pattern/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/732.%20My%20Calendar%20III/">
         <h2 class="post-title"></h2>
     </a>
@@ -737,76 +800,6 @@ public:
         
     </div>
     <a href="/2023/03/20/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/2426.%20Number%20of%20Pairs%20Satisfying%20Inequality/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="2426-Number-of-Pairs-Satisfying-Inequality"><a href="#2426-Number-of-Pairs-Satisfying-Inequality" class="headerlink" title="2426. Number of Pairs Satisfying Inequality"></a>2426. Number of Pairs Satisfying Inequality</h1><h2 id="pb-ds的使用"><a href="#pb-ds的使用" class="headerlink" title="pb_ds的使用"></a>pb_ds的使用</h2><p>支持Hash_table, Tree, Trie等数据结构，并且相对于STL还有一些扩展</p>
-<p>声明库：</p>
-<pre><code class="c++">#include&lt;ext/pb_ds/assoc_container.hpp&gt;
-#include&lt;ext/pb_ds/tree_policy.hpp&gt;//用tree
-#include&lt;ext/pb_ds/hash_policy.hpp&gt;//用hash
-#include&lt;ext/pb_ds/trie_policy.hpp&gt;//用trie
-#include&lt;ext/pb_ds/priority_queue.hpp&gt;//用priority_queue
-using namespace __gnu_pbds;
-</code></pre>
-<p>Tree的声明：</p>
-<pre><code class="c++">template&lt;class T&gt; using ordered_set = tree&lt;T, nulltype, less&lt;T&gt;, rb_tree_tag, tree_order_statistics_node_update&gt;;
-</code></pre>
-<p>Trie的声明：</p>
-<pre><code class="c++">template&lt;class T&gt; using Trie = trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt;
-</code></pre>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code class="c++">#include&lt;ext/pb_ds/assoc_container.hpp&gt;
-#include&lt;ext/pb_ds/tree_policy.hpp&gt;
-
-using namespace __gnu_pbds;
-
-template&lt;class T&gt; using ordered_set = tree&lt;T,null_type,less_equal&lt;T&gt;,rb_tree_tag,tree_order_statistics_node_update&gt;;
-
-typedef long long ll;
-
-class Solution &#123;
-public:
-    long long numberOfPairs(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b, int diff) &#123;
-        int n = a.size();
-
-        ll ans = 0;
-        ordered_set&lt;int&gt; os;
-        
-        for(int i=0; i&lt;n; i++) &#123;
-            ans += os.order_of_key(a[i]-b[i]+diff+1);
-            os.insert(a[i]-b[i]);
-        &#125;
-        
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/2426.%20Number%20of%20Pairs%20Satisfying%20Inequality/" class="go-post">阅读全文</a>
 </div>
 
 

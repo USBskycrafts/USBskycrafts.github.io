@@ -165,6 +165,90 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/834.%20Sum%20of%20Distances%20in%20Tree/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="834-Sum-of-Distances-in-Tree"><a href="#834-Sum-of-Distances-in-Tree" class="headerlink" title="834. Sum of Distances in Tree"></a>834. Sum of Distances in Tree</h1><h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h2><p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 3 * 104</code></li>
+<li><code>edges.length == n - 1</code></li>
+<li><code>edges[i].length == 2</code></li>
+<li><code>0 &lt;= ai, bi &lt; n</code></li>
+<li><code>ai != bi</code></li>
+<li>The given input represents a valid tree.</li>
+</ul>
+<p>Because of that, the algorithm must be $O(n)$, so must analyze the relation between each nodes</p>
+<img src="834. Sum of Distances in Tree.assets/sketch1.png" alt="Tree diagram illustrating recurrence for ans[child]" style="zoom: 25%;" />
+
+<p><code>#Y</code> represent the node number of Y subtree.</p>
+<p><code>anx[y] = x@X + y@Y + #(X)</code>, so <code>ans[x] - ans[y] = #(Y) - #(X)</code></p>
+<p>So, first we search from root to leaves to get the distance from root to every node, then we use the equation above to iterate to get the answer, like the picture below</p>
+<img src="834. Sum of Distances in Tree.assets/sketch2.png" alt="Tree diagram illustrating recurrence for ans[child]" style="zoom: 25%;" />
+
+<pre><code class="c++">class Solution &#123;
+private:
+    unordered_map&lt;int, vector&lt;int&gt;&gt; graph;
+    vector&lt;int&gt; count, dis, ans;
+    
+    inline void dfs1(int root = 0, int parent = -1) &#123;        
+        for(auto node : graph[root]) &#123;
+            if(node == parent) continue;
+            dfs1(node, root);
+            count[root] += count[node];
+            dis[root] += dis[node] + count[node];
+        &#125;
+    &#125;
+    
+    inline void dfs2(int root = 0, int parent = -1) &#123;
+        for(auto node : graph[root]) &#123;
+            if(node == parent) continue;
+            int n = count.size();
+            ans[node] = ans[root] + (n - count[node]) - count[node];
+            dfs2(node, root);
+        &#125;
+    &#125;
+public:
+    vector&lt;int&gt; sumOfDistancesInTree(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges) &#123;
+        count.resize(n, 1), dis.resize(n, 0), ans.resize(n, 0);
+        int m = edges.size();
+        for(int i = 0; i &lt; m; i++) &#123;
+            int u = edges[i][0], v = edges[i][1];
+            graph[u].push_back(v);
+            graph[v].push_back(u);
+        &#125;
+        dfs1();
+        ans[0] = dis[0];
+        dfs2();
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/834.%20Sum%20of%20Distances%20in%20Tree/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/790.%20Domino%20and%20Tromino%20Tiling/">
         <h2 class="post-title"></h2>
     </a>
@@ -722,69 +806,6 @@ public:
         
     </div>
     <a href="/2023/03/20/393.%20UTF-8%20Validation/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/290.%20Word%20Pattern/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="290-Word-Pattern"><a href="#290-Word-Pattern" class="headerlink" title="290. Word Pattern"></a>290. Word Pattern</h1><h1 id="踩坑点："><a href="#踩坑点：" class="headerlink" title="踩坑点："></a>踩坑点：</h1><ol>
-<li>c++ 下如何split：</li>
-</ol>
-<p>​	对于<code> &quot; &quot;</code>来说，可以使用sstream来进行分割</p>
-<pre><code class="c++">stringstream ss(s);
-istream_iterator&lt;string&gt; begin(ss), end;
-vector&lt;string&gt; s_arr(begin, end);
-</code></pre>
-<ol start="2">
-<li>相互映射，不止<code>string-&gt;char</code>，还得<code>char-&gt;string</code></li>
-</ol>
-<p>源代码：</p>
-<pre><code class="c++">class Solution &#123;
-public:
-    bool wordPattern(string pattern, string s) &#123;
-        stringstream ss(s);
-        istream_iterator&lt;string&gt; begin(ss), end;
-        vector&lt;string&gt; s_arr(begin, end);
-        if(pattern.size() != s_arr.size()) return false;
-        int n = pattern.size();
-        unordered_map&lt;char, string&gt; m;
-        unordered_map&lt;string, char&gt; h;
-        for(int i = 0; i &lt; n; i++) &#123;
-            if(m.count(pattern[i]) == 0 &amp;&amp; h.count(s_arr[i]) == 0) &#123;
-                m[pattern[i]] = s_arr[i];
-                h[s_arr[i]] = pattern[i];
-            &#125; else if(m[pattern[i]] != s_arr[i] || h[s_arr[i]] != pattern[i]) &#123;
-                return false;
-            &#125;
-        &#125;
-        return  true;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/290.%20Word%20Pattern/" class="go-post">阅读全文</a>
 </div>
 
 
