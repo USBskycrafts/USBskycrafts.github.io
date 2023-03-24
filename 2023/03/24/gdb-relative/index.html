@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>1319. Number of Operations to Make Network Connected | Blog of Junran Yang</title>
+        <title>A view of GDB | Blog of Junran Yang</title>
         <meta name="author" content="Junran Yang(杨竣然)" />
         <meta name="description" content="a blog to record daily life" />
         <meta name="keywords" content="" />
@@ -145,14 +145,14 @@
 
                 <div class="article">
     <div>
-        <h1>1319. Number of Operations to Make Network Connected</h1>
+        <h1>A view of GDB</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/22
+            2023/3/24
         </span>
         
         
@@ -163,7 +163,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/leetcode-algorithm/" style="color: #ffa2c4">leetcode algorithm</a>
+                <a href="/tags/thoughts/" style="color: #03a9f4">thoughts</a>
             </span>
             
         </span>
@@ -171,51 +171,23 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/">Problem</a></h1><p>There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where connections[i] &#x3D; [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other computer directly or indirectly through the network.</p>
-<p>You are given an initial computer network connections. You can extract certain cables between two directly connected computers, and place them between any pair of disconnected computers to make them directly connected.</p>
-<p>Return the minimum number of times you need to do this in order to make all the computers connected. If it is not possible, return -1.</p>
-<span id="more"></span>
+        <h1 id="GDB-可以算是一种解释器吗"><a href="#GDB-可以算是一种解释器吗" class="headerlink" title="GDB 可以算是一种解释器吗"></a>GDB 可以算是一种解释器吗</h1><span id="more"></span>
 
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>The way to connect all the computer with least cable numbers is connect them in a line. It is also an union-find set problem. We check the final root numbers, and compare it with the verbose cable numbers(<code>int verbose</code>), if the verbose cable number is larger than the ultra root numbers, then it is possible to connect all the computers.</p>
-<pre><code class="c++">class Solution &#123;
-private:
-    inline int look(vector&lt;int&gt;&amp; father, int node) &#123;
-        return (node == father[node] ? node : look(father, father[node]));
-    &#125;
-public:
-    int makeConnected(int n, vector&lt;vector&lt;int&gt;&gt;&amp; connections) &#123;
-        vector&lt;int&gt; father(n, 0);
-        if(n - 1 &gt; connections.size()) &#123;
-            return -1;
-        &#125;
-        for(int i = 0; i &lt; n; i++) &#123;
-            father[i] = i;
-        &#125;
-        int verbose = 0;
-        for(auto con : connections) &#123;
-            int l1 = look(father, con[0]);
-            int l2 = look(father, con[1]);
-            if(l1 &lt; l2) &#123;
-                swap(l1, l2);
-            &#125; else if(l1 == l2) &#123;
-                verbose++;
-            &#125;
-            father[l2] = l1;
-        &#125;
-        int roots = 0;
-        for(int i = 0; i &lt; n; i++) &#123;
-            if(father[i] == i) &#123;
-                roots++;
-            &#125;
-        &#125;
-        if(roots - 1 &gt; verbose) &#123;
-            return -1;
-        &#125; else &#123;
-            return roots - 1;
-        &#125;
-    &#125;
-&#125;;
-</code></pre>
+<p>以下答案来自于chatgpt，个人认为应该是没问题的</p>
+<ul>
+<li><p>GDB（GNU Debugger）是一个强大的调试器，它可以帮助程序员在调试过程中查找程序中的错误。GDB 提供了命令行界面，可以通过输入命令来与程序进行交互，例如运行程序、设置断点、查看程序状态等等。</p>
+</li>
+<li><p>尽管GDB和解释器都可以通过输入命令与程序进行交互，但是它们的功能和实现方式有很大的不同。解释器是一种可以执行脚本或程序的软件，它可以将源代码逐行解释执行，而不需要将其编译成机器代码。相比之下，GDB 主要用于调试编译好的程序，它可以让程序暂停在指定的位置，查看程序状态，检查变量的值等等，以便程序员找到程序中的问题。</p>
+</li>
+<li><p>因此，虽然 GDB 也有一些类似于解释器的特点，但是它更多地是一个调试器，而不是一个解释器。</p>
+</li>
+</ul>
+<h1 id="追问：-那gdb算是机器码的解释器吗"><a href="#追问：-那gdb算是机器码的解释器吗" class="headerlink" title="追问： 那gdb算是机器码的解释器吗"></a>追问： 那gdb算是机器码的解释器吗</h1><ul>
+<li><p>DB 可以被看作是一个机器码级别的调试器，它可以对已编译的程序进行调试。GDB 通过读取程序的可执行文件，可以理解并执行其中的机器码指令，同时提供了许多调试工具和接口，帮助程序员在调试过程中检查和修改程序的状态，以便找到程序中的问题。</p>
+</li>
+<li><p>因此，虽然 GDB 并不是一个传统意义上的解释器，它仍然可以被认为是一种将机器码指令解释执行的工具，以帮助程序员调试和理解程序的运行状态。</p>
+</li>
+</ul>
 
     </div>
     

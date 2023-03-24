@@ -203,13 +203,53 @@
         
         <span class="tag">
             
-            <a href="/tags/Resume/" style="color: #00bcd4">
+            <a href="/tags/Resume/" style="color: #ffa2c4">
                 Resume
             </a>
         </span>
         
     </div>
     <a href="/2023/03/21/CV/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/24/gdb-relative/">
+        <h2 class="post-title">A view of GDB</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/24
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="GDB-可以算是一种解释器吗"><a href="#GDB-可以算是一种解释器吗" class="headerlink" title="GDB 可以算是一种解释器吗"></a>GDB 可以算是一种解释器吗</h1>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/thoughts/" style="color: #00bcd4">
+                thoughts
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/24/gdb-relative/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -247,7 +287,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #00a596">
+            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
                 leetcode algorithm
             </a>
         </span>
@@ -289,7 +329,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #ff7d73">
+            <a href="/tags/leetcode-algorithm/" style="color: #00a596">
                 leetcode algorithm
             </a>
         </span>
@@ -363,7 +403,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #ff7d73">
+            <a href="/tags/leetcode-algorithm/" style="color: #00bcd4">
                 leetcode algorithm
             </a>
         </span>
@@ -725,70 +765,6 @@ public:
         
     </div>
     <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/948.%20Bag%20of%20Tokens/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="948-Bag-of-Tokens"><a href="#948-Bag-of-Tokens" class="headerlink" title="948. Bag of Tokens"></a>948. Bag of Tokens</h1><h2 id="双指针（-O-n-log-n-）"><a href="#双指针（-O-n-log-n-）" class="headerlink" title="双指针（$O(n\log{n}))$）"></a>双指针（$O(n\log{n}))$）</h2><pre><code class="c++">class Solution &#123;
-public:
-    int bagOfTokensScore(vector&lt;int&gt;&amp; tokens, int power) &#123;
-        sort(tokens.rbegin(), tokens.rend());
-        int i = 0, j = tokens.size() - 1;
-        int score = 0;
-        while(i &lt;= j) &#123;
-            if(power &lt; tokens[j] &amp;&amp; score == 0) break;
-            
-            if(power &lt; tokens[j]) &#123;
-                power += (tokens[i] - tokens[j]);
-                i++, j--;
-            &#125; else &#123;
-                score += 1;
-                power -= tokens[j];
-                j--;
-            &#125;
-            //cout &lt;&lt; power &lt;&lt; endl;
-        &#125;
-        return score;
-    &#125;
-&#125;;
-</code></pre>
-<p><strong>Notes:</strong></p>
-<ol>
-<li><p>必须判断当前score能否足够转换成power<code>if(power &lt; tokens[j] &amp;&amp; score == 0) break;</code>，然后才能进行<code>token</code>到<code>power</code>的转换</p>
-<pre><code class="c++">if(power &lt; tokens[j]) &#123;
-    power += (tokens[i] - tokens[j]);
-    i++, j--;
-&#125;
-</code></pre>
-</li>
-<li><p>由于是从大到小进行了排序，因此<code>if(power &lt; tokens[j])</code>里<code>token[i]</code>一定足够转换成<code>token[j]</code></p>
-</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/948.%20Bag%20of%20Tokens/" class="go-post">阅读全文</a>
 </div>
 
 

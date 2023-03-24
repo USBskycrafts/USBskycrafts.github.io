@@ -165,6 +165,103 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/336.%20Palindrome%20Pairs/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="336-Palindrome-Pairs"><a href="#336-Palindrome-Pairs" class="headerlink" title="336. Palindrome Pairs"></a>336. Palindrome Pairs</h1><h2 id="前缀数组"><a href="#前缀数组" class="headerlink" title="前缀数组"></a>前缀数组</h2><p>由于在本题中，由于需要匹配字符串的前缀，因此我们需要构造一个前缀树，同时在每个<code>TrieNode</code>节点还需要记录子节点是否存在对称的字符串，因此可以构造如下的<code>TireNode</code></p>
+<p>![image-20220917170355236](336. Palindrome Pairs.assets&#x2F;image-20220917170355236.png “1, 3, 4三种情况”)</p>
+<pre><code class="c++">struct TrieNode &#123;
+        TrieNode* children[26];
+        int index = -1;
+        vector&lt;int&gt; restIsPal;
+&#125;;
+</code></pre>
+<p>相比传统的前缀树，多出记录剩下的结点是否为对称节点的<code>vector&lt;int&gt; restIsPal</code>来记录节点标号<code>index</code></p>
+<pre><code class="c++">class Solution &#123;
+private:
+    struct TrieNode &#123;
+        TrieNode* children[26];
+        int index = -1;
+        vector&lt;int&gt; restIsPal;
+    &#125;;
+    
+    TrieNode *root = new TrieNode();
+    vector&lt;vector&lt;int&gt;&gt; ans;
+    
+    bool isPal(string &amp;s, int i, int j) &#123;
+        while(i &lt; j) &#123;
+            if(s[i++] != s[j--]) return false;
+        &#125;
+        return true;
+    &#125;
+    void add(string &amp;s, int index) &#123;
+        TrieNode *cur = root;
+        for(int i = s.size() - 1; i &gt;= 0; i--) &#123;
+            int p = s[i] - &#39;a&#39;;
+            if(!cur-&gt;children[p]) cur-&gt;children[p] = new TrieNode();
+            if(isPal(s, 0, i)) cur-&gt;restIsPal.push_back(index);
+            cur = cur-&gt;children[p];
+        &#125;
+        cur-&gt;index = index;
+    &#125;
+    
+    void search(string &amp;s, int index) &#123;
+        TrieNode* cur = root;
+        for(int i = 0; i &lt; s.size(); i++) &#123;
+            int p = s[i] - &#39;a&#39;;
+            if(cur-&gt;index != -1 &amp;&amp; isPal(s, i, s.size() - 1)) ans.push_back(&#123;index, cur-&gt;index&#125;);
+            if(cur-&gt;children[p] == nullptr) return;
+            cur = cur-&gt;children[p];
+        &#125;
+        if(cur-&gt;index != -1 &amp;&amp; index != cur-&gt;index) ans.push_back(&#123;index, cur-&gt;index&#125;);
+        for(int i : cur-&gt;restIsPal) ans.push_back(&#123;index, i&#125;);
+    &#125;
+public:
+    vector&lt;vector&lt;int&gt;&gt; palindromePairs(vector&lt;string&gt;&amp; words) &#123;
+        int n = words.size();
+        for(int i = 0; i &lt; n; i++) &#123;
+            add(words[i], i);
+        &#125;
+        
+        for(int i = 0; i &lt; n; i++) &#123;
+            search(words[i], i);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>其中<code>add(string s, int index)</code>构建<code>Tire</code>，<code>search(string s, int index)</code>用于搜索当前字符串是否存在一个倒叙相等<code>if(cur-&gt;index != -1 &amp;&amp; index != cur-&gt;index)</code>&#x2F;倒叙子串<code>if(cur-&gt;index != -1 &amp;&amp; isPal(s, i, s.size() - 1))</code>，是否为某个字符串的倒叙子串<code>for(int i : cur-&gt;restIsPal) ans.push_back(&#123;index, i&#125;)</code></p>
+<p><strong>Note</strong></p>
+<ol>
+<li>由于我们要处理<code>restIsPal</code>，因此当前<code>i</code>所在的<code>TrieNode</code>并不是<code>i</code>对应的节点，而是其父节点</li>
+<li><code>search</code>时，注意要判子节点是否为空<code>if(cur-&gt;children[p] == nullptr) return;</code></li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/336.%20Palindrome%20Pairs/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/393.%20UTF-8%20Validation/">
         <h2 class="post-title"></h2>
     </a>
@@ -714,67 +811,6 @@ public:
         
     </div>
     <a href="/2023/03/20/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/981.%20Time%20Based%20Key-Value%20Store/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="981-Time-Based-Key-Value-Store"><a href="#981-Time-Based-Key-Value-Store" class="headerlink" title="981. Time Based Key-Value Store"></a>981. Time Based Key-Value Store</h1><h2 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h2><ol>
-<li>双重map的插入方法: <code>m[key].insert(&#123;timestamp, value&#125;);</code>，采用<code>insert</code>方法直接插入pair类型</li>
-<li>dead_signal: 在查找时，需要判断第一层<code>map</code>的<code>key</code>是否存在</li>
-</ol>
-<pre><code class="c++">class TimeMap &#123;
-private:
-    unordered_map&lt;string, map&lt;int, string, less&lt;int&gt;&gt;&gt; m;
-public:
-    TimeMap() &#123;
-        
-    &#125;
-    
-    void set(string key, string value, int timestamp) &#123;
-        m[key].insert(&#123;timestamp, value&#125;);
-    &#125;
-    
-    string get(string key, int timestamp) &#123;
-        if(m.count(key) == 0) return &quot;&quot;;
-        auto p = m[key].upper_bound(timestamp);
-        p--;
-        if(p-&gt;first &lt;= timestamp) return p-&gt;second;
-        else return &quot;&quot;;
-    &#125;
-&#125;;
-
-/**
- * Your TimeMap object will be instantiated and called as such:
- * TimeMap* obj = new TimeMap();
- * obj-&gt;set(key,value,timestamp);
- * string param_2 = obj-&gt;get(key,timestamp);
- */
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/981.%20Time%20Based%20Key-Value%20Store/" class="go-post">阅读全文</a>
 </div>
 
 

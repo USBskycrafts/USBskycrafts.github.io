@@ -165,6 +165,55 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/1996.%20The%20Number%20of%20Weak%20Characters%20in%20the%20Game/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1996-The-Number-of-Weak-Characters-in-the-Game"><a href="#1996-The-Number-of-Weak-Characters-in-the-Game" class="headerlink" title="1996. The Number of Weak Characters in the Game"></a>1996. The Number of Weak Characters in the Game</h1><p><strong><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-number-of-weak-characters-in-the-game">https://leetcode.com/problems/the-number-of-weak-characters-in-the-game</a></strong></p>
+<pre><code class="c++">class Solution &#123;
+public:
+    int numberOfWeakCharacters(vector&lt;vector&lt;int&gt;&gt;&amp; properties) &#123;
+        sort(properties.begin(), properties.end(), [](vector&lt;int&gt; &amp;a, vector&lt;int&gt; &amp;b) &#123;
+            if(a[0] != b[0]) return a[0] &gt; b[0];
+            else return a[1] &lt; b[1];
+        &#125;);
+        
+        int ans = 0, max_def = INT_MIN;
+        for(auto p : properties) &#123;
+            if(max_def &gt; p[1]) ans++;
+            else max_def = p[1];
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>核心思想：</p>
+<p>attack属性从大到小排列，defend属性从小到大排列，从而确保当遍历到一个<code>auto p</code>时，当<code>max_def</code>比当前<code>p</code>的defend值大时，attack也能保证比defend大。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1996.%20The%20Number%20of%20Weak%20Characters%20in%20the%20Game/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/">
         <h2 class="post-title"></h2>
     </a>
@@ -588,7 +637,7 @@ public:
         
         <span class="tag">
             
-            <a href="/tags/algorithm/" style="color: #03a9f4">
+            <a href="/tags/algorithm/" style="color: #00a596">
                 algorithm
             </a>
         </span>
