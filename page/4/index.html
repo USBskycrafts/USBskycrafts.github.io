@@ -165,6 +165,89 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="188-Best-Time-to-Buy-and-Sell-Stock-IV"><a href="#188-Best-Time-to-Buy-and-Sell-Stock-IV" class="headerlink" title="188. Best Time to Buy and Sell Stock IV"></a>188. Best Time to Buy and Sell Stock IV</h1><h2 id="O-n-2-times-k-的算法（最慢）"><a href="#O-n-2-times-k-的算法（最慢）" class="headerlink" title="$O(n^2\times k)$的算法（最慢）"></a>$O(n^2\times k)$的算法（最慢）</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;
+        if(k == 0 || prices.size() &lt;= 1) return 0;
+        int n = prices.size(), dp[k + 1][n];
+        memset(dp, 0, sizeof(dp));
+        
+        for(int l = 1; l &lt;= k; l++) &#123;
+            for(int i = 0; i &lt; n; i++) &#123;
+                dp[l][i] = dp[l][max(0, i - 1)];
+                for(int j = 0; j &lt; i; j++) &#123;
+                    dp[l][i] = max(dp[l][i], dp[l - 1][j] + prices[i] - prices[j]);
+                &#125;
+            &#125;
+        &#125;
+        return dp[k][n - 1];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>注意要点</strong>：</p>
+<pre><code> 1.  `dp[l][i]`不仅要和下标小于`i`的元素的`dp[l][j]`进行比较，还要考虑如果第`i`日不卖出，直接从`dp[l][i - 1]`转移，总的收入是否更高
+</code></pre>
+<h2 id="O-n-times-k-的算法"><a href="#O-n-times-k-的算法" class="headerlink" title="$O(n\times k)$的算法"></a>$O(n\times k)$的算法</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;
+        // no transaction, no profit
+        if (k == 0) return 0;
+        // dp[k][0] = min cost you need to spend at most k transactions
+        // dp[k][1] = max profit you can achieve at most k transactions
+        vector&lt;vector&lt;int&gt;&gt; dp(k + 1, vector&lt;int&gt;(2));
+        for (int i = 0; i &lt;= k; i++) dp[i][0] = INT_MAX;
+        for (auto&amp; price : prices) &#123;
+            for (int i = 1; i &lt;= k; i++) &#123;
+                // price - dp[i - 1][1] is how much you need to spend
+                // i.e use the profit you earned from previous transaction to buy the stock
+                // we want to minimize it
+                dp[i][0] = min(dp[i][0], price - dp[i - 1][1]);
+                // price - dp[i][0] is how much you can achieve from previous min cost
+                // we want to maximize it
+                dp[i][1] = max(dp[i][1], price - dp[i][0]);
+            &#125;
+        &#125;
+        // return max profit at most k transactions
+        // or you can use `return dp.back()[1];`
+        return dp[k][1];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>note:</strong></p>
+<p><a target="_blank" rel="noopener" href="https://wingkwong.github.io/leetcode-the-hard-way/solutions/0100-0199/best-time-to-buy-and-sell-stock-iv-hard">0188 - Best Time to Buy and Sell Stock IV (Hard) | LeetCode The Hard Way (wingkwong.github.io)</a></p>
+<ol>
+<li><code>dp[i][0] = min(dp[i][0], price - dp[i - 1][1]);</code>比较的是“是否购入第<code>price</code>所在天的股票所需要的花费哪个更小”，前者<code>dp[i][0]</code>指不购入当前天的股票，花费与前一天相同。注意，此时<code>dp[i - 1][1]</code>所指的为“当前天卖了<code>i - 1</code>次股票所能带来的利润”，而非前一天的（由从0到k遍历这个性质决定）</li>
+<li>花费指代总花费，利润指代总利润</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/2426.%20Number%20of%20Pairs%20Satisfying%20Inequality/">
         <h2 class="post-title"></h2>
     </a>
@@ -811,85 +894,6 @@ public:
         
     </div>
     <a href="/2023/03/20/1996.%20The%20Number%20of%20Weak%20Characters%20in%20the%20Game/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="2007-Find-Original-Array-From-Doubled-Array"><a href="#2007-Find-Original-Array-From-Doubled-Array" class="headerlink" title="2007. Find Original Array From Doubled Array"></a>2007. Find Original Array From Doubled Array</h1><pre><code class="c++">class Solution &#123;
-public:
-    vector&lt;int&gt; findOriginalArray(vector&lt;int&gt;&amp; changed) &#123;
-        if(changed.size() % 2 == 1) return &#123;&#125;;
-        unordered_map&lt;int, int&gt; m;
-        vector&lt;int&gt; ans;
-        for(auto num : changed) &#123;
-            m[num]++;
-        &#125;
-        sort(changed.begin(), changed.end());
-        for(auto num : changed) &#123;
-            if(m[num] == 0) continue;
-            if(m[num * 2] == 0) return &#123;&#125;;
-            ans.push_back(num);
-            m[num]--;
-            m[num * 2]--;
-        &#125;
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-<p><strong>Notes</strong></p>
-<ol>
-<li><p>为什么用map而不是set？</p>
-<p>因为要对未来遍历到的元素进行“删除”操作，如果用set会导致越界</p>
-</li>
-<li><p>为什么要对changed排序后遍历，而不是用map统计完changed后直接遍历map，如：</p>
-<pre><code class="c++">class Solution &#123;
-public:
-    vector&lt;int&gt; findOriginalArray(vector&lt;int&gt;&amp; changed) &#123;
-        if(changed.size() % 2 == 1) return &#123;&#125;;
-        map&lt;int, int&gt; m;
-        vector&lt;int&gt; ans;
-        for(auto num : changed) &#123;
-            m[num]++;
-        &#125;
-        for(auto num : m) &#123;
-            if(num.second == 0) continue;
-            if(m[num.first * 2] == 0) return &#123;&#125;;
-            ans.push_back(num.first);
-            num.second--;
-            m[num.first * 2]--;
-        &#125;
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-<p>因为存在<code>[0, 0, 0, 0]</code>这种特殊情况，<code>expected: [0, 0]</code>，<code>output: [0]</code></p>
-</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/" class="go-post">阅读全文</a>
 </div>
 
 

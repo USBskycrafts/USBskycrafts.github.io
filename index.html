@@ -203,13 +203,57 @@
         
         <span class="tag">
             
-            <a href="/tags/Resume/" style="color: #ffa2c4">
+            <a href="/tags/Resume/" style="color: #00bcd4">
                 Resume
             </a>
         </span>
         
     </div>
     <a href="/2023/03/21/CV/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/23/leetcode-1466/">
+        <h2 class="post-title">1466. Reorder Routes to Make All Paths Lead to the City Zero</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/23
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/">Problem</a></h1><p>There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one direction because they are too narrow.</p>
+<p>Roads are represented by connections where connections[i] &#x3D; [ai, bi] represents a road from city ai to city bi.</p>
+<p>This year, there will be a big event in the capital (city 0), and many people want to travel to this city.</p>
+<p>Your task consists of reorienting some roads such that each city can visit the city 0. Return the minimum number of edges changed.</p>
+<p>It’s guaranteed that each city can reach city 0 after reorder.</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/leetcode-algorithm/" style="color: #00a596">
+                leetcode algorithm
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/23/leetcode-1466/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -245,7 +289,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
+            <a href="/tags/leetcode-algorithm/" style="color: #00bcd4">
                 leetcode algorithm
             </a>
         </span>
@@ -319,7 +363,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
+            <a href="/tags/leetcode-algorithm/" style="color: #ff7d73">
                 leetcode algorithm
             </a>
         </span>
@@ -745,71 +789,6 @@ public:
         
     </div>
     <a href="/2023/03/20/948.%20Bag%20of%20Tokens/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/838.%20Push%20Dominoes/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="838-Push-Dominoes"><a href="#838-Push-Dominoes" class="headerlink" title="838. Push Dominoes"></a>838. Push Dominoes</h1><h3 id="Core-quantitative-the-force"><a href="#Core-quantitative-the-force" class="headerlink" title="Core: quantitative the force"></a>Core: quantitative the force</h3><p>if ‘L’ is ‘R’ is in initial string, we give the highest force, then when it spread, it is count down at the adjacent num, we do it from left and from right</p>
-<pre><code class="c++">class Solution &#123;
-public:
-    string pushDominoes(string dominoes) &#123;
-        int n = dominoes.size();
-        auto print = [&amp;](int a)&#123;cout &lt;&lt; a &lt;&lt; &quot; &quot;;&#125;;
-        vector&lt;int&gt; left(n, 0), right(n, 0);
-        string ans(n, &#39;.&#39;);
-        for(int i = 0; i &lt; n; i++) &#123;
-            if(dominoes[i] == &#39;R&#39;) left[i] = n;
-            else if(dominoes[i] == &#39;L&#39;) continue;
-            else if(i != 0 &amp;&amp; left[i - 1] &gt; 0) left[i] = left[i - 1] - 1;
-            
-        &#125;
-        
-        for(int i = n - 1; i &gt;= 0; i--) &#123;
-            if(dominoes[i] == &#39;L&#39;) right[i] = n;
-            else if(dominoes[i] == &#39;R&#39;) continue;
-            else if(i != n - 1 &amp;&amp; right[i + 1] &gt; 0) right[i] = right[i + 1] - 1;
-        &#125;
-        
-        for(int i = 0; i &lt; n; i++) &#123;
-            if(left[i] &gt; right[i]) ans[i] = &#39;R&#39;;
-            else if(left[i] &lt; right[i]) ans[i] = &#39;L&#39;;
-            else ans[i] = &#39;.&#39;;
-        &#125;
-        
-        for_each(left.begin(), left.end(), print);
-        cout &lt;&lt; endl;
-        for_each(right.begin(), right.end(), print);
-        cout &lt;&lt; endl;
-        
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/838.%20Push%20Dominoes/" class="go-post">阅读全文</a>
 </div>
 
 

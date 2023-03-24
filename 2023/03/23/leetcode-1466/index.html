@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>1319. Number of Operations to Make Network Connected | Blog of Junran Yang</title>
+        <title>1466. Reorder Routes to Make All Paths Lead to the City Zero | Blog of Junran Yang</title>
         <meta name="author" content="Junran Yang(杨竣然)" />
         <meta name="description" content="a blog to record daily life" />
         <meta name="keywords" content="" />
@@ -145,14 +145,14 @@
 
                 <div class="article">
     <div>
-        <h1>1319. Number of Operations to Make Network Connected</h1>
+        <h1>1466. Reorder Routes to Make All Paths Lead to the City Zero</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/22
+            2023/3/23
         </span>
         
         
@@ -163,7 +163,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">leetcode algorithm</a>
+                <a href="/tags/leetcode-algorithm/" style="color: #00bcd4">leetcode algorithm</a>
             </span>
             
         </span>
@@ -171,48 +171,76 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/">Problem</a></h1><p>There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where connections[i] &#x3D; [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other computer directly or indirectly through the network.</p>
-<p>You are given an initial computer network connections. You can extract certain cables between two directly connected computers, and place them between any pair of disconnected computers to make them directly connected.</p>
-<p>Return the minimum number of times you need to do this in order to make all the computers connected. If it is not possible, return -1.</p>
+        <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/">Problem</a></h1><p>There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one direction because they are too narrow.</p>
+<p>Roads are represented by connections where connections[i] &#x3D; [ai, bi] represents a road from city ai to city bi.</p>
+<p>This year, there will be a big event in the capital (city 0), and many people want to travel to this city.</p>
+<p>Your task consists of reorienting some roads such that each city can visit the city 0. Return the minimum number of edges changed.</p>
+<p>It’s guaranteed that each city can reach city 0 after reorder.</p>
 <span id="more"></span>
 
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>The way to connect all the computer with least cable numbers is connect them in a line. It is also an union-find set problem. We check the final root numbers, and compare it with the verbose cable numbers(<code>int verbose</code>), if the verbose cable number is larger than the ultra root numbers, then it is possible to connect all the computers.</p>
+<h1 id="My-Solution-Slow"><a href="#My-Solution-Slow" class="headerlink" title="My Solution(Slow)"></a>My Solution(Slow)</h1><p>merge the adjacent nodes into the set of index 0, just a kind of bfs</p>
 <pre><code class="c++">class Solution &#123;
-private:
-    inline int look(vector&lt;int&gt;&amp; father, int node) &#123;
-        return (node == father[node] ? node : look(father, father[node]));
-    &#125;
+struct Node &#123;
+    int num;
+    map&lt;int, int&gt; next; 
+&#125;;
 public:
-    int makeConnected(int n, vector&lt;vector&lt;int&gt;&gt;&amp; connections) &#123;
-        vector&lt;int&gt; father(n, 0);
-        if(n - 1 &gt; connections.size()) &#123;
-            return -1;
-        &#125;
+    int minReorder(int n, vector&lt;vector&lt;int&gt;&gt;&amp; connections) &#123;
+        vector&lt;Node&gt; nodes(n);
         for(int i = 0; i &lt; n; i++) &#123;
-            father[i] = i;
+            nodes[i].num = i;
         &#125;
-        int verbose = 0;
-        for(auto con : connections) &#123;
-            int l1 = look(father, con[0]);
-            int l2 = look(father, con[1]);
-            if(l1 &lt; l2) &#123;
-                swap(l1, l2);
-            &#125; else if(l1 == l2) &#123;
-                verbose++;
+        for(auto c : connections) &#123;
+            nodes[c[0]].next[c[1]] = 1;
+            nodes[c[1]].next[c[0]] = 0;
+        &#125;
+        int count = 0;
+        queue&lt;int&gt; list;
+        set&lt;int&gt; adj;
+        adj.insert(0);
+        list.push(0);
+        while(!list.empty()) &#123;
+            auto index = list.front();
+            list.pop();
+            auto node = nodes[index];
+            for(auto&amp; [n, dir] : node.next) &#123;           
+                if(!adj.count(n)) &#123;
+                    list.push(n);
+                    adj.insert(n);
+                    if(dir == 1) &#123;
+                        count++;
+                    &#125;
+                &#125;
+                
             &#125;
-            father[l2] = l1;
         &#125;
-        int roots = 0;
-        for(int i = 0; i &lt; n; i++) &#123;
-            if(father[i] == i) &#123;
-                roots++;
-            &#125;
+        return count;
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="A-fast-version-algorithm-is-same-but-the-data-structure-is-more-simple"><a href="#A-fast-version-algorithm-is-same-but-the-data-structure-is-more-simple" class="headerlink" title="A fast version(algorithm is same, but the data structure is more simple)"></a>A fast version(algorithm is same, but the data structure is more simple)</h1><pre><code class="c++">vector&lt;pair&lt;int, int&gt;&gt; A[50004];
+class Solution &#123;
+public:
+    int result;
+    void solve(int cur, int parent) &#123;
+        for(auto&amp; [x, y]:A[cur]) &#123;
+            if (x == parent) continue;
+            result += y;
+            solve(x, cur);
         &#125;
-        if(roots - 1 &gt; verbose) &#123;
-            return -1;
-        &#125; else &#123;
-            return roots - 1;
+    &#125;
+    int minReorder(int n, vector&lt;vector&lt;int&gt;&gt;&amp; con) &#123;
+        for (int i=0; i&lt;n; i++) A[i].clear();
+        int N = con.size();
+        for(auto&amp; data:con) &#123;
+            int x = data[0];
+            int y = data[1];
+            A[x].push_back(&#123;y, 1&#125;);
+            A[y].push_back(&#123;x, 0&#125;);
         &#125;
+        result = 0;
+        solve(0, -1);
+        return result;
     &#125;
 &#125;;
 </code></pre>

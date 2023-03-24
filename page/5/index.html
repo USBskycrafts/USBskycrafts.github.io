@@ -165,6 +165,85 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2007-Find-Original-Array-From-Doubled-Array"><a href="#2007-Find-Original-Array-From-Doubled-Array" class="headerlink" title="2007. Find Original Array From Doubled Array"></a>2007. Find Original Array From Doubled Array</h1><pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; findOriginalArray(vector&lt;int&gt;&amp; changed) &#123;
+        if(changed.size() % 2 == 1) return &#123;&#125;;
+        unordered_map&lt;int, int&gt; m;
+        vector&lt;int&gt; ans;
+        for(auto num : changed) &#123;
+            m[num]++;
+        &#125;
+        sort(changed.begin(), changed.end());
+        for(auto num : changed) &#123;
+            if(m[num] == 0) continue;
+            if(m[num * 2] == 0) return &#123;&#125;;
+            ans.push_back(num);
+            m[num]--;
+            m[num * 2]--;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>Notes</strong></p>
+<ol>
+<li><p>为什么用map而不是set？</p>
+<p>因为要对未来遍历到的元素进行“删除”操作，如果用set会导致越界</p>
+</li>
+<li><p>为什么要对changed排序后遍历，而不是用map统计完changed后直接遍历map，如：</p>
+<pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; findOriginalArray(vector&lt;int&gt;&amp; changed) &#123;
+        if(changed.size() % 2 == 1) return &#123;&#125;;
+        map&lt;int, int&gt; m;
+        vector&lt;int&gt; ans;
+        for(auto num : changed) &#123;
+            m[num]++;
+        &#125;
+        for(auto num : m) &#123;
+            if(num.second == 0) continue;
+            if(m[num.first * 2] == 0) return &#123;&#125;;
+            ans.push_back(num.first);
+            num.second--;
+            m[num.first * 2]--;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+<p>因为存在<code>[0, 0, 0, 0]</code>这种特殊情况，<code>expected: [0, 0]</code>，<code>output: [0]</code></p>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2007.%20Find%20Original%20Array%20From%20Doubled%20Array/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/1531.%20String%20Compression%20II/">
         <h2 class="post-title"></h2>
     </a>
@@ -509,7 +588,7 @@ public:
         
         <span class="tag">
             
-            <a href="/tags/algorithm/" style="color: #ffa2c4">
+            <a href="/tags/algorithm/" style="color: #00bcd4">
                 algorithm
             </a>
         </span>
