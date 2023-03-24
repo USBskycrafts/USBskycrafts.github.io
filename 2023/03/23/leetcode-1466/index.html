@@ -163,7 +163,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/leetcode-algorithm/" style="color: #00bcd4">leetcode algorithm</a>
+                <a href="/tags/leetcode-algorithm/" style="color: #ffa2c4">leetcode algorithm</a>
             </span>
             
         </span>
@@ -230,7 +230,9 @@ public:
         &#125;
     &#125;
     int minReorder(int n, vector&lt;vector&lt;int&gt;&gt;&amp; con) &#123;
-        for (int i=0; i&lt;n; i++) A[i].clear();
+        for(int i = 0; i &lt; n; i++) &#123;
+          A[i].clear();
+        &#125;
         int N = con.size();
         for(auto&amp; data:con) &#123;
             int x = data[0];
