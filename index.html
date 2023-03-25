@@ -203,13 +203,54 @@
         
         <span class="tag">
             
-            <a href="/tags/Resume/" style="color: #ffa2c4">
+            <a href="/tags/Resume/" style="color: #ff7d73">
                 Resume
             </a>
         </span>
         
     </div>
     <a href="/2023/03/21/CV/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/24/leetcode-2316/">
+        <h2 class="post-title">2316. Count Unreachable Pairs of Nodes in an Undirected</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/24
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/description/">Problem</a></h1><p>You are given an integer n. There is an undirected graph with n nodes, numbered from 0 to n - 1. You are given a 2D integer array edges where edges[i] &#x3D; [ai, bi] denotes that there exists an undirected edge connecting nodes ai and bi.</p>
+<p>Return the number of pairs of different nodes that are unreachable from each other.</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
+                leetcode-algorithm
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/24/leetcode-2316/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -287,7 +328,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
+            <a href="/tags/leetcode-algorithm/" style="color: #ffa2c4">
                 leetcode algorithm
             </a>
         </span>
@@ -329,7 +370,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #00a596">
+            <a href="/tags/leetcode-algorithm/" style="color: #00bcd4">
                 leetcode algorithm
             </a>
         </span>
@@ -714,57 +755,6 @@ public:
         
     </div>
     <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="1043-Partition-Array-for-Maximum-Sum"><a href="#1043-Partition-Array-for-Maximum-Sum" class="headerlink" title="1043. Partition Array for Maximum Sum"></a>1043. Partition Array for Maximum Sum</h1><h2 id="DP："><a href="#DP：" class="headerlink" title="DP："></a>DP：</h2><pre><code class="c++">class Solution &#123;
-public:
-    int maxSumAfterPartitioning(vector&lt;int&gt;&amp; arr, int k) &#123;
-        int n = arr.size();
-        int dp[n + 1];
-        memset(dp, 0, sizeof(dp));
-        for(int i = n - 1; i &gt;= 0; i--) &#123;
-            int len = 1, max_num = 0, max_sum = 0;
-            for(int j = i; j &lt; min(n, i + k); j++) &#123;
-                max_num = max(max_num, arr[j]);
-                max_sum = max((len++) * max_num + dp[j + 1], max_sum);
-            &#125;
-            dp[i] = max_sum;
-        &#125;
-        return dp[0];
-    &#125;
-&#125;;
-</code></pre>
-<p><strong>Note:</strong></p>
-<ol>
-<li>先后缀，再前缀的扫描，可以充分对结果<code>max_num</code>进行记录</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/" class="go-post">阅读全文</a>
 </div>
 
 

@@ -165,6 +165,57 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="1043-Partition-Array-for-Maximum-Sum"><a href="#1043-Partition-Array-for-Maximum-Sum" class="headerlink" title="1043. Partition Array for Maximum Sum"></a>1043. Partition Array for Maximum Sum</h1><h2 id="DP："><a href="#DP：" class="headerlink" title="DP："></a>DP：</h2><pre><code class="c++">class Solution &#123;
+public:
+    int maxSumAfterPartitioning(vector&lt;int&gt;&amp; arr, int k) &#123;
+        int n = arr.size();
+        int dp[n + 1];
+        memset(dp, 0, sizeof(dp));
+        for(int i = n - 1; i &gt;= 0; i--) &#123;
+            int len = 1, max_num = 0, max_sum = 0;
+            for(int j = i; j &lt; min(n, i + k); j++) &#123;
+                max_num = max(max_num, arr[j]);
+                max_sum = max((len++) * max_num + dp[j + 1], max_sum);
+            &#125;
+            dp[i] = max_sum;
+        &#125;
+        return dp[0];
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>Note:</strong></p>
+<ol>
+<li>先后缀，再前缀的扫描，可以充分对结果<code>max_num</code>进行记录</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/948.%20Bag%20of%20Tokens/">
         <h2 class="post-title"></h2>
     </a>
@@ -731,55 +782,6 @@ public:
         
     </div>
     <a href="/2023/03/20/622.%20Design%20Circular%20Queue/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/523.%20Continuous%20Subarray%20Sum/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="523-Continuous-Subarray-Sum"><a href="#523-Continuous-Subarray-Sum" class="headerlink" title="523. Continuous Subarray Sum"></a>523. Continuous Subarray Sum</h1><h2 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h2><p>$(sum[r + 1] - sum[l]) % k &#x3D; 0$ 变换为$sum[r + 1] % k &#x3D; sum[l] % k$，因此用hash存储标号，注意<strong>长度至少为2</strong></p>
-<pre><code class="c++">class Solution &#123;
-public:
-    bool checkSubarraySum(vector&lt;int&gt;&amp; nums, int k) &#123;
-        int tot = 0, n = nums.size();
-        unordered_map&lt;int, int&gt; m = &#123;&#123;0, 0&#125;&#125;;
-        for(int i = 0; i &lt; n; i++) &#123;
-            tot += nums[i];
-            if(!m.count(tot % k)) m[tot % k] = i + 1;
-            else if(m[tot % k] &lt; i) return true;
-        &#125;
-        return false;
-    &#125;
-&#125;;
-</code></pre>
-<p>注意点：</p>
-<ol>
-<li>要初始化为{0, 0}，因为要考虑从头开始全选的情况</li>
-<li>要注意上一个<code>m[tot % k]</code>至少要2长度</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/523.%20Continuous%20Subarray%20Sum/" class="go-post">阅读全文</a>
 </div>
 
 
