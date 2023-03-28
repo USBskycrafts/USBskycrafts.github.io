@@ -203,13 +203,56 @@
         
         <span class="tag">
             
-            <a href="/tags/Resume/" style="color: #ff7d73">
+            <a href="/tags/Resume/" style="color: #ffa2c4">
                 Resume
             </a>
         </span>
         
     </div>
     <a href="/2023/03/21/CV/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/27/leetcode-983/">
+        <h2 class="post-title">leetcode-983</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/27
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-cost-for-tickets/description/">Problem</a></h1><p>You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.</p>
+<p>Train tickets are sold in three different ways:</p>
+<p>a 1-day pass is sold for costs[0] dollars,<br>a 7-day pass is sold for costs[1] dollars, and<br>a 30-day pass is sold for costs[2] dollars.<br>The passes allow that many days of consecutive travel.</p>
+<p>For example, if we get a 7-day pass on day 2, then we can travel for 7 days: 2, 3, 4, 5, 6, 7, and 8.<br>Return the minimum number of dollars you need to travel every day in the given list of days.</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/leetcode-algorthm/" style="color: #ff7d73">
+                leetcode algorthm
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/27/leetcode-983/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -244,7 +287,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
+            <a href="/tags/leetcode-algorithm/" style="color: #ff7d73">
                 leetcode-algorithm
             </a>
         </span>
@@ -284,7 +327,7 @@
         
         <span class="tag">
             
-            <a href="/tags/thoughts/" style="color: #00bcd4">
+            <a href="/tags/thoughts/" style="color: #ffa2c4">
                 thoughts
             </a>
         </span>
@@ -328,7 +371,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #ffa2c4">
+            <a href="/tags/leetcode-algorithm/" style="color: #03a9f4">
                 leetcode algorithm
             </a>
         </span>
@@ -444,7 +487,7 @@
         
         <span class="tag">
             
-            <a href="/tags/leetcode-algorithm/" style="color: #00bcd4">
+            <a href="/tags/leetcode-algorithm/" style="color: #ffa2c4">
                 leetcode algorithm
             </a>
         </span>
@@ -670,91 +713,6 @@ public:
         
     </div>
     <a href="/2023/03/20/1383.%20Maximum%20Performance%20of%20a%20Team/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="990-Satisfiability-of-Equality-Equations"><a href="#990-Satisfiability-of-Equality-Equations" class="headerlink" title="990. Satisfiability of Equality Equations"></a>990. Satisfiability of Equality Equations</h1><h2 id="Core"><a href="#Core" class="headerlink" title="Core:"></a>Core:</h2><h3 id="Find-Union"><a href="#Find-Union" class="headerlink" title="Find-Union"></a><strong>Find-Union</strong></h3><h4 id="合并："><a href="#合并：" class="headerlink" title="合并："></a>合并：</h4><p>​	要合并两棵树，我们只需要将一棵树的根节点连到另一棵树的根节点。</p>
-<pre><code class="c++">void unite(size_t x, size_t y) &#123;
-    pa[find(x)] = find(y);
-&#125;
-</code></pre>
-<p>合并时，选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度。我们可以将节点较少或深度较小的树连到另一棵，以免发生退化，这种被称为<strong>启发式合并</strong></p>
-<pre><code class="c++">// C++ Version
-struct dsu &#123;
-    vector&lt;size_t&gt; pa, size;
-
-    explicit dsu(size_t _size): pa(_size), size(_size, 1) &#123;
-        iota(pa.begin(), pa.end(), 0);
-    &#125;
-
-    void unite(size_t x, size_t y) &#123;
-        x = find(x), y = find(y);
-        if (x == y) return;
-        if (size[x] &lt; size[y]) swap(x, y);
-        pa[y] = x;
-        size[x] += size[y];
-    &#125;
-&#125;
-</code></pre>
-<h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩:"></a>路径压缩:</h4><p>在合并中，由于我们只是将根节点合并到了新的树里，但根节点的子节点还是指向该根节点，因此可以进行路径压缩。查询过程中经过的每个元素都属于该集合，我们可以将其直接连到根节点以加快后续查询。</p>
-<p><img src="https://oi-wiki.org/ds/images/disjoint-set-compress.svg" alt="img"></p>
-<pre><code class="c++">
-// C++ Version
-size_t find(size_t x) &#123;
-    //                       ↓ very important
-    return pa[x] == x ? x : pa[x] = find(pa[x]);
-&#125;
-</code></pre>
-<p>本题代码：</p>
-<pre><code class="c++">class Solution &#123;
-private:
-    int uf[26];
-    inline int find(int x) &#123;return uf[x] == x ? x : (uf[x] = find(uf[x]));&#125;
-public:
-    bool equationsPossible(vector&lt;string&gt;&amp; equations) &#123;
-        int n = equations.size();
-        for(int i = 0; i &lt; 26; i++) uf[i] = i;
-        
-        for(string s : equations) &#123;
-            if(s[1] == &#39;=&#39;) &#123;
-                uf[find(s[0] - &#39;a&#39;)] = uf[find(s[3] - &#39;a&#39;)];
-            &#125;
-        &#125;
-        
-        for(string s : equations) &#123;
-            if(s[1] == &#39;!&#39; &amp;&amp; find(s[0] - &#39;a&#39;) == find(s[3] - &#39;a&#39;)) return false;
-        &#125;
-        
-        return true;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/" class="go-post">阅读全文</a>
 </div>
 
 

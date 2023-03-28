@@ -165,6 +165,61 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/2420.%20Find%20All%20Good%20Indices/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="2420-Find-All-Good-Indices"><a href="#2420-Find-All-Good-Indices" class="headerlink" title="2420. Find All Good Indices"></a>2420. Find All Good Indices</h1><p><strong>Notes:</strong></p>
+<ol>
+<li>主题思想单调队列没有任何问题，关键是如何实现单调队列。通过单一从左到右遍历数组和容易出现一些情况无法考虑到的情况（几十个WA的教训），因此考虑从数组两端进行两次遍历，分别统计出上升和下降的长度</li>
+<li>当<code>increase[i + 1]</code>和<code>decrease[i - 1]</code>都大于<code>k</code>时，则当前的<code>i</code>满足题目要求</li>
+</ol>
+<pre><code class="c++">class Solution &#123;
+public:
+    vector&lt;int&gt; goodIndices(vector&lt;int&gt;&amp; nums, int k) &#123;
+        int n = nums.size();
+        vector&lt;int&gt; increase(n, 1), decrease(n, 1), ans;
+        
+        for(int i = 1; i &lt; n; i++) &#123;
+            if(nums[i] &lt;= nums[i - 1]) decrease[i] += decrease[i - 1];
+        &#125;
+        
+        for(int i = n - 2; i &gt;= 0; i--) &#123;
+            if(nums[i] &lt;= nums[i + 1]) increase[i] += increase[i + 1];
+        &#125;
+        
+        for(int i = k; i &lt; n - k; i++) &#123;
+            if(increase[i + 1] &gt;= k &amp;&amp; decrease[i - 1] &gt;= k) ans.push_back(i);
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/2420.%20Find%20All%20Good%20Indices/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/2423.%20Remove%20Letter%20To%20Equalize%20Frequency/">
         <h2 class="post-title"></h2>
     </a>
@@ -691,7 +746,7 @@ public:
         
         <span class="tag">
             
-            <a href="/tags/algorithm/" style="color: #ffa2c4">
+            <a href="/tags/algorithm/" style="color: #03a9f4">
                 algorithm
             </a>
         </span>

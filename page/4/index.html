@@ -165,6 +165,87 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/886.%20Possible%20Bipartition/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="886-Possible-Bipartition"><a href="#886-Possible-Bipartition" class="headerlink" title="886. Possible Bipartition"></a>886. Possible Bipartition</h1><h2 id="二分图问题："><a href="#二分图问题：" class="headerlink" title="二分图问题："></a>二分图问题：</h2><p>踩坑日志：</p>
+<ol>
+<li>将奇怪的dislikes格式转换成接邻矩阵</li>
+<li>二分图可能有多个不连通的图构成，因此是多源的，需要<code>for(int i = 1; i &lt;= n; i++)</code>遍历一遍node</li>
+</ol>
+<pre><code class="c++">class Solution &#123;
+public:
+    bool possibleBipartition(int n, vector&lt;vector&lt;int&gt;&gt;&amp; dislikes) &#123;
+        vector&lt;vector&lt;int&gt;&gt; edges(n + 1, vector&lt;int&gt;());
+        vector&lt;int&gt; label(n + 1, 0);
+        queue&lt;int&gt; buffer;
+        if(dislikes.empty()) return true;
+        for(auto p : dislikes) &#123;
+            if(p.empty()) continue;
+            edges[p[0]].push_back(p[1]);
+            edges[p[1]].push_back(p[0]);
+        &#125;
+
+        for(int i = 1; i &lt;= n; i++) &#123;
+            if(label[i] == 0) buffer.push(i);
+            else continue;
+
+            label[i] = 1;
+            while(!buffer.empty()) &#123;
+                auto p = buffer.front();
+                buffer.pop();
+                if(label[p] == 1) &#123;
+                    for(auto edge : edges[p]) &#123;
+                        if(label[edge] == 1) return false;
+                        else if(label[edge] == 0) &#123;
+                            label[edge] = 2;
+                            buffer.push(edge);
+                        &#125;
+                       
+                        
+                    &#125;
+                &#125; else if(label[p] == 2) &#123;
+                    for(auto edge : edges[p]) &#123;
+                        if(label[edge] == 2) return false;
+                        else if(label[edge] == 0) &#123;
+                            buffer.push(edge);
+                            label[edge] = 1;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/886.%20Possible%20Bipartition/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/19.%20Remove%20Nth%20Node%20From%20End%20of%20List/">
         <h2 class="post-title"></h2>
     </a>
@@ -854,61 +935,6 @@ public:
         
     </div>
     <a href="/2023/03/20/2421.%20Number%20of%20Good%20Paths/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/2420.%20Find%20All%20Good%20Indices/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="2420-Find-All-Good-Indices"><a href="#2420-Find-All-Good-Indices" class="headerlink" title="2420. Find All Good Indices"></a>2420. Find All Good Indices</h1><p><strong>Notes:</strong></p>
-<ol>
-<li>主题思想单调队列没有任何问题，关键是如何实现单调队列。通过单一从左到右遍历数组和容易出现一些情况无法考虑到的情况（几十个WA的教训），因此考虑从数组两端进行两次遍历，分别统计出上升和下降的长度</li>
-<li>当<code>increase[i + 1]</code>和<code>decrease[i - 1]</code>都大于<code>k</code>时，则当前的<code>i</code>满足题目要求</li>
-</ol>
-<pre><code class="c++">class Solution &#123;
-public:
-    vector&lt;int&gt; goodIndices(vector&lt;int&gt;&amp; nums, int k) &#123;
-        int n = nums.size();
-        vector&lt;int&gt; increase(n, 1), decrease(n, 1), ans;
-        
-        for(int i = 1; i &lt; n; i++) &#123;
-            if(nums[i] &lt;= nums[i - 1]) decrease[i] += decrease[i - 1];
-        &#125;
-        
-        for(int i = n - 2; i &gt;= 0; i--) &#123;
-            if(nums[i] &lt;= nums[i + 1]) increase[i] += increase[i + 1];
-        &#125;
-        
-        for(int i = k; i &lt; n - k; i++) &#123;
-            if(increase[i + 1] &gt;= k &amp;&amp; decrease[i - 1] &gt;= k) ans.push_back(i);
-        &#125;
-        return ans;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/2420.%20Find%20All%20Good%20Indices/" class="go-post">阅读全文</a>
 </div>
 
 

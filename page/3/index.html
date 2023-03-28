@@ -165,6 +165,96 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/622.%20Design%20Circular%20Queue/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="622-Design-Circular-Queue"><a href="#622-Design-Circular-Queue" class="headerlink" title="622. Design Circular Queue"></a>622. Design Circular Queue</h1><p><strong>教训:</strong></p>
+<ol>
+<li>一定要添加元素个数<code>n</code></li>
+<li>初始化时，<code>front = 0</code>，<code>rear = -1</code></li>
+</ol>
+<pre><code class="c++">class MyCircularQueue &#123;
+private:
+    int n = 0, k, front = 0, rear = -1;
+    vector&lt;int&gt; q;
+public:
+    MyCircularQueue(int k) &#123;
+        this-&gt;k = k;
+        q.resize(k, 0);
+    &#125;
+    
+    bool enQueue(int value) &#123;
+        if(n == k) return false;
+        rear = (rear + 1) % k;
+        q[rear] = value;
+        n++;
+        return true;
+    &#125;
+    
+    bool deQueue() &#123;
+        if(n == 0) return false;
+        
+        front = (front + 1) % k;
+        n--;
+        return true;
+    &#125;
+    
+    int Front() &#123;
+        if(n == 0) return -1;
+        return q[front];
+    &#125;
+    
+    int Rear() &#123;
+        if(n == 0) return -1;
+        return q[rear];
+    &#125;
+    
+    bool isEmpty() &#123;
+        return n == 0;
+    &#125;
+    
+    bool isFull() &#123;
+        return n == k;
+    &#125;
+&#125;;
+
+/**
+ * Your MyCircularQueue object will be instantiated and called as such:
+ * MyCircularQueue* obj = new MyCircularQueue(k);
+ * bool param_1 = obj-&gt;enQueue(value);
+ * bool param_2 = obj-&gt;deQueue();
+ * int param_3 = obj-&gt;Front();
+ * int param_4 = obj-&gt;Rear();
+ * bool param_5 = obj-&gt;isEmpty();
+ * bool param_6 = obj-&gt;isFull();
+ */
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/622.%20Design%20Circular%20Queue/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/523.%20Continuous%20Subarray%20Sum/">
         <h2 class="post-title"></h2>
     </a>
@@ -722,87 +812,6 @@ public:
         
     </div>
     <a href="/2023/03/20/16.%203Sum%20Closest/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/886.%20Possible%20Bipartition/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="886-Possible-Bipartition"><a href="#886-Possible-Bipartition" class="headerlink" title="886. Possible Bipartition"></a>886. Possible Bipartition</h1><h2 id="二分图问题："><a href="#二分图问题：" class="headerlink" title="二分图问题："></a>二分图问题：</h2><p>踩坑日志：</p>
-<ol>
-<li>将奇怪的dislikes格式转换成接邻矩阵</li>
-<li>二分图可能有多个不连通的图构成，因此是多源的，需要<code>for(int i = 1; i &lt;= n; i++)</code>遍历一遍node</li>
-</ol>
-<pre><code class="c++">class Solution &#123;
-public:
-    bool possibleBipartition(int n, vector&lt;vector&lt;int&gt;&gt;&amp; dislikes) &#123;
-        vector&lt;vector&lt;int&gt;&gt; edges(n + 1, vector&lt;int&gt;());
-        vector&lt;int&gt; label(n + 1, 0);
-        queue&lt;int&gt; buffer;
-        if(dislikes.empty()) return true;
-        for(auto p : dislikes) &#123;
-            if(p.empty()) continue;
-            edges[p[0]].push_back(p[1]);
-            edges[p[1]].push_back(p[0]);
-        &#125;
-
-        for(int i = 1; i &lt;= n; i++) &#123;
-            if(label[i] == 0) buffer.push(i);
-            else continue;
-
-            label[i] = 1;
-            while(!buffer.empty()) &#123;
-                auto p = buffer.front();
-                buffer.pop();
-                if(label[p] == 1) &#123;
-                    for(auto edge : edges[p]) &#123;
-                        if(label[edge] == 1) return false;
-                        else if(label[edge] == 0) &#123;
-                            label[edge] = 2;
-                            buffer.push(edge);
-                        &#125;
-                       
-                        
-                    &#125;
-                &#125; else if(label[p] == 2) &#123;
-                    for(auto edge : edges[p]) &#123;
-                        if(label[edge] == 2) return false;
-                        else if(label[edge] == 0) &#123;
-                            buffer.push(edge);
-                            label[edge] = 1;
-                        &#125;
-                    &#125;
-                &#125;
-            &#125;
-        &#125;
-
-        return true;
-    &#125;
-&#125;;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/886.%20Possible%20Bipartition/" class="go-post">阅读全文</a>
 </div>
 
 

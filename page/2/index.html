@@ -165,6 +165,91 @@
             
 
 <div class="post">
+    <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="990-Satisfiability-of-Equality-Equations"><a href="#990-Satisfiability-of-Equality-Equations" class="headerlink" title="990. Satisfiability of Equality Equations"></a>990. Satisfiability of Equality Equations</h1><h2 id="Core"><a href="#Core" class="headerlink" title="Core:"></a>Core:</h2><h3 id="Find-Union"><a href="#Find-Union" class="headerlink" title="Find-Union"></a><strong>Find-Union</strong></h3><h4 id="合并："><a href="#合并：" class="headerlink" title="合并："></a>合并：</h4><p>​	要合并两棵树，我们只需要将一棵树的根节点连到另一棵树的根节点。</p>
+<pre><code class="c++">void unite(size_t x, size_t y) &#123;
+    pa[find(x)] = find(y);
+&#125;
+</code></pre>
+<p>合并时，选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度。我们可以将节点较少或深度较小的树连到另一棵，以免发生退化，这种被称为<strong>启发式合并</strong></p>
+<pre><code class="c++">// C++ Version
+struct dsu &#123;
+    vector&lt;size_t&gt; pa, size;
+
+    explicit dsu(size_t _size): pa(_size), size(_size, 1) &#123;
+        iota(pa.begin(), pa.end(), 0);
+    &#125;
+
+    void unite(size_t x, size_t y) &#123;
+        x = find(x), y = find(y);
+        if (x == y) return;
+        if (size[x] &lt; size[y]) swap(x, y);
+        pa[y] = x;
+        size[x] += size[y];
+    &#125;
+&#125;
+</code></pre>
+<h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩:"></a>路径压缩:</h4><p>在合并中，由于我们只是将根节点合并到了新的树里，但根节点的子节点还是指向该根节点，因此可以进行路径压缩。查询过程中经过的每个元素都属于该集合，我们可以将其直接连到根节点以加快后续查询。</p>
+<p><img src="https://oi-wiki.org/ds/images/disjoint-set-compress.svg" alt="img"></p>
+<pre><code class="c++">
+// C++ Version
+size_t find(size_t x) &#123;
+    //                       ↓ very important
+    return pa[x] == x ? x : pa[x] = find(pa[x]);
+&#125;
+</code></pre>
+<p>本题代码：</p>
+<pre><code class="c++">class Solution &#123;
+private:
+    int uf[26];
+    inline int find(int x) &#123;return uf[x] == x ? x : (uf[x] = find(uf[x]));&#125;
+public:
+    bool equationsPossible(vector&lt;string&gt;&amp; equations) &#123;
+        int n = equations.size();
+        for(int i = 0; i &lt; 26; i++) uf[i] = i;
+        
+        for(string s : equations) &#123;
+            if(s[1] == &#39;=&#39;) &#123;
+                uf[find(s[0] - &#39;a&#39;)] = uf[find(s[3] - &#39;a&#39;)];
+            &#125;
+        &#125;
+        
+        for(string s : equations) &#123;
+            if(s[1] == &#39;!&#39; &amp;&amp; find(s[0] - &#39;a&#39;) == find(s[3] - &#39;a&#39;)) return false;
+        &#125;
+        
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/20/990.%20Satisfiability%20of%20Equality%20Equations/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/20/1043.%20Partition%20Array%20for%20Maximum%20Sum/">
         <h2 class="post-title"></h2>
     </a>
@@ -692,96 +777,6 @@ public:
         
     </div>
     <a href="/2023/03/20/658.%20Find%20K%20Closest%20Elements/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/20/622.%20Design%20Circular%20Queue/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="622-Design-Circular-Queue"><a href="#622-Design-Circular-Queue" class="headerlink" title="622. Design Circular Queue"></a>622. Design Circular Queue</h1><p><strong>教训:</strong></p>
-<ol>
-<li>一定要添加元素个数<code>n</code></li>
-<li>初始化时，<code>front = 0</code>，<code>rear = -1</code></li>
-</ol>
-<pre><code class="c++">class MyCircularQueue &#123;
-private:
-    int n = 0, k, front = 0, rear = -1;
-    vector&lt;int&gt; q;
-public:
-    MyCircularQueue(int k) &#123;
-        this-&gt;k = k;
-        q.resize(k, 0);
-    &#125;
-    
-    bool enQueue(int value) &#123;
-        if(n == k) return false;
-        rear = (rear + 1) % k;
-        q[rear] = value;
-        n++;
-        return true;
-    &#125;
-    
-    bool deQueue() &#123;
-        if(n == 0) return false;
-        
-        front = (front + 1) % k;
-        n--;
-        return true;
-    &#125;
-    
-    int Front() &#123;
-        if(n == 0) return -1;
-        return q[front];
-    &#125;
-    
-    int Rear() &#123;
-        if(n == 0) return -1;
-        return q[rear];
-    &#125;
-    
-    bool isEmpty() &#123;
-        return n == 0;
-    &#125;
-    
-    bool isFull() &#123;
-        return n == k;
-    &#125;
-&#125;;
-
-/**
- * Your MyCircularQueue object will be instantiated and called as such:
- * MyCircularQueue* obj = new MyCircularQueue(k);
- * bool param_1 = obj-&gt;enQueue(value);
- * bool param_2 = obj-&gt;deQueue();
- * int param_3 = obj-&gt;Front();
- * int param_4 = obj-&gt;Rear();
- * bool param_5 = obj-&gt;isEmpty();
- * bool param_6 = obj-&gt;isFull();
- */
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2023/03/20/622.%20Design%20Circular%20Queue/" class="go-post">阅读全文</a>
 </div>
 
 
